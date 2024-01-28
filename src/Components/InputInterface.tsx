@@ -1,6 +1,7 @@
 import { InputInterfaceProps } from "../interfaces/interfaces";
 
-function InputInterface ({state, handleChange, currentIndex}:InputInterfaceProps) {
+function InputInterface ({state, handleChange}:InputInterfaceProps) {
+const currentIndex = state.length - 1;
   return (
 	  <form onSubmit={(event)=> handleChange(event, true, "finish")}
 	className="input-section flex-center">

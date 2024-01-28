@@ -1,3 +1,5 @@
+import { FormEvent } from "react";
+
 export interface Client {
   name: string,
   seller: string,
@@ -25,6 +27,5 @@ export interface PurchaseDetails {
 }
 export interface InputInterfaceProps {
   state: PurchaseDetails[],
-  currentIndex: number,
   handleChange: Function
 }

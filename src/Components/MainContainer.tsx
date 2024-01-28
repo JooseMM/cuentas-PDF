@@ -5,11 +5,10 @@ import OutputInterface from './OutputInterface';
 
 const MainContainer = () => {
     const  { state, handleChange }= useAccountState();
-    const currentIndex = state.length - 1;
 
   return (
     <main className="flex-center">
-      <InputInterface handleChange={handleChange} state={state} currentIndex={currentIndex}/>
+      <InputInterface handleChange={handleChange} state={state} />
       <OutputInterface state={state}/>
     </main>
   )
