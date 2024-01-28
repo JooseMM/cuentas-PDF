@@ -23,3 +23,8 @@ export interface PurchaseDetails {
   productName: string,
   productPrice: number
 }
+export interface InputInterfaceProps {
+  state: PurchaseDetails[],
+  currentIndex: number,
+  handleChange: Function
+}
