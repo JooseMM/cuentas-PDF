@@ -1,8 +1,8 @@
-import { PurchaseDetails } from "../interfaces/interfaces";
+import { OutputInterfaceProps } from "../interfaces/interfaces";
 
-function OutputInterface({state}:{state: PurchaseDetails[]}){
+function OutputInterface({state, total}:OutputInterfaceProps){
 const outputState = state.slice(0, state.length - 1);
-const total = 120000;
+console.log(total)
 return (
       <table className="output-section flex-center">
 	<thead>

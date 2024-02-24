@@ -29,3 +29,7 @@ export interface InputInterfaceProps {
   state: PurchaseDetails[],
   handleChange: Function
 }
+export interface OutputInterfaceProps {
+  state: PurchaseDetails[],
+  total: number
+}
