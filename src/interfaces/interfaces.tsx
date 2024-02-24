@@ -1,4 +1,3 @@
-import { FormEvent } from "react";
 
 export interface Client {
   name: string,
@@ -23,7 +22,8 @@ export interface PurchaseDetails {
   clientSeller: string,
   branch: string,
   productName: string,
-  productPrice: number
+  productPrice: number,
+  productQuantity: number
 }
 export interface InputInterfaceProps {
   state: PurchaseDetails[],

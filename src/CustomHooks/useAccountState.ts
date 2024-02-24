@@ -2,8 +2,8 @@ import { FormEvent, useReducer } from "react";
 import { ActionParams, PurchaseDetails } from "../interfaces/interfaces";
 
 
-const initValue = { clientName: '', clientSeller: '', branch: '', productName: '', productPrice: 0 };
-const onChangePrototype = { clientName: undefined, clientSeller: undefined, branch: undefined, productName: undefined, productPrice: 0, finish: false };
+const initValue = { clientName: '', clientSeller: '', branch: '', productName: '', productQuantity: 0, productPrice: 0 };
+const onChangePrototype = { clientName: undefined, clientSeller: undefined, branch: undefined, productName: undefined, productQuantity: undefined, productPrice: undefined, finish: false };
 
 function reducer(state:PurchaseDetails[], action:ActionParams):PurchaseDetails[]{
   if(action.finish) {
@@ -24,8 +24,8 @@ function reducer(state:PurchaseDetails[], action:ActionParams):PurchaseDetails[]
 export function useAccountState() {
   const initCopy = Object.create(initValue);
   const [state, dispatch] = useReducer(reducer, [initCopy])
-  function handleChange(event: FormEvent<HTMLFormElement> | undefined, updateValue: string | boolean, key: keyof ActionParams):void {
 
+  function handleChange(event: FormEvent<HTMLFormElement> | undefined, updateValue: string | number | boolean, key: keyof ActionParams):void {
     if(event) { event.preventDefault(); }
     let finishValue = Object.create(onChangePrototype);
     finishValue[key] = updateValue;

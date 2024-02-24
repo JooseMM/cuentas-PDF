@@ -1,20 +1,40 @@
 import { PurchaseDetails } from "../interfaces/interfaces";
 
 function OutputInterface({state}:{state: PurchaseDetails[]}){
+const outputState = state.slice(0, state.length - 1);
+const total = 120000;
 return (
-      <div className="output-section flex-center">
-	{state.map((currentValue, index) => {
+      <table className="output-section flex-center">
+	<thead>
+	  <tr>
+	    <th className="qty">Cantidad</th>
+	    <th>Paciente</th>
+	    <th className="product">Producto</th>
+	    <th className="price">Precio</th>
+	    <th className="delete">Delete</th>
+	  </tr>
+	</thead>
+	<tbody>
+	{outputState.map((currentValue, index) => {
 	  return (
-	  <ul key={index}>
-	    <li >Id:{index}</li>
-	    <li >{currentValue.clientName}</li> 
-	    <li >{currentValue.productPrice}</li>
-	    <li >{currentValue.productName}</li> 
-	    </ul>
+	      <tr key={index}>
+		<td className="qty" >{currentValue.productQuantity}</td>
+		<td className="client">{currentValue.clientName}</td>
+		<td className="product">{currentValue.productName}</td>
+		<td className="price">{`$${currentValue.productPrice}`}</td>
+		<td className="delete"><button>Delete</button></td>
+	      </tr>
 	  )
-
 	})}
-      </div>
+	</tbody>
+	<tfoot>
+	<tr>
+	<th></th>
+	<th></th>
+	<td><b>total: $</b>{total}</td>
+	</tr>
+	</tfoot>
+      </table>
       )
 }
 export default OutputInterface;
