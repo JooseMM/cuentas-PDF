@@ -1,34 +1,71 @@
+*, * > * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+main {
+  flex-direction: row;
+  width: 40rem;
+  margin-inline: auto;
+}
+input{
+  padding: 0.9rem 1rem;
+  border: none;
+  border-radius: 4px;
+}
+h1 {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 4rem;
+}
 .navbar {
+  display: flex;
+  justify-content: space-between;
   width: 80%;
   margin-inline:auto;
   margin-block: 2rem;
 }
-.flex-center {
+.main-container {
   display: flex;
-  justify-content: space-between;
-}
-main {
-  flex-direction: row;
-  width: 70%;
-  margin-inline: auto;
+  flex-direction: column;
 }
 .input-section {
-  margin-right: 2rem;
+  display: flex;
   flex-direction: column;
-  align-items:flex-start;
+}
+.input-section .input-row:not(:last-child) {
+  margin-bottom: 0.8rem;
+}
+.input-section .input-row {
+  display: flex;
+  justify-items: center;
+}
+.input-row .single-input {
+  display: flex;
+  flex-direction: column;
+  width: 19rem;
+}
+.input-row .single-input:not(:last-child) {
+  margin-right: 2rem;
+}
+.single-input > input {
+  width: 100%;
 }
 .output-section {
-  margin-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
   align-items: center;
 }
-button {
+.input-section .add-button {
+  margin-top: 1rem;
+  width: 100%;
   background-color: wheat;
   outline: none;
   border: none;
-  padding: 0.5rem 1.5rem;
+  padding: 1rem;
   border-radius: 0.2rem;
   font-weight: 600;
 }
-input{
-  padding: 0.5rem 1rem;
-}
+

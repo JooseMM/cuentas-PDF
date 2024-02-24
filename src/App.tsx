@@ -1,14 +1,20 @@
 import './App.css'
 import Navbar from './Components/Navbar'
-import MainContainer from './Components/MainContainer'
+import { useAccountState } from './CustomHooks/useAccountState';
+import InputInterface from './Components/InputInterface';
+import OutputInterface from './Components/OutputInterface';
 
 function App() {
 
+    const  { state, handleChange }= useAccountState();
   return (
-    <div >
+    <>
       <Navbar/>
-      <MainContainer/>
-    </div>
+    <main className="main-container">
+      <InputInterface handleChange={handleChange} state={state} />
+      <OutputInterface state={state}/>
+    </main>
+    </>
   )
 }
 
