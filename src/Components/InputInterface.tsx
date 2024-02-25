@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { InputInterfaceProps } from "../interfaces/interfaces";
 
 function InputInterface ({state, handleChange}:InputInterfaceProps) {
@@ -18,7 +19,7 @@ const currentIndex = state.length - 1;
 	      />
 	  </div>
 	    <div className="single-input">
-	      <label htmlFor='productName'>Producto</label>
+	      <label htmlFor='productName'>Producto/Servicio</label>
 	      <input type="text" id="productName" 
 	      placeholder="Corona Zirconio"
 	      value={state[currentIndex].productName}
@@ -31,6 +32,8 @@ const currentIndex = state.length - 1;
 	      <label htmlFor='productPrice'>Precio</label>
 	      <input type="number" id="productPrice" 
 	      value={state[currentIndex].productPrice}
+	      step={1000}
+	      min={0}
 	      onChange={(e)=> handleChange(undefined, e.target.value, 'productPrice')}
 	      />
 	    </div>
@@ -60,7 +63,7 @@ const currentIndex = state.length - 1;
 		onChange={(e)=> handleChange(undefined, e.target.value, 'branch')}/>
 	      </div>
 	    </div>
-	  <button className="add-button" type='submit'>Add purchase</button>
+	  <button className="add-button" type='submit'>Agregar</button>
 	</form>
   );
 }

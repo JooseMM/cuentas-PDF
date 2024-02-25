@@ -10,7 +10,6 @@ export function reducer(state:PurchaseDetails[], action:ActionParams):PurchaseDe
     return [...newState, initCopy]
   }
   if(action.delete !== undefined ) {
-    //const newState = state.length !== 1 ? state.filter((_element, index)=> index != action.delete) : [initCopy];  
     const newState = state.filter((_element, index)=> index != action.delete);
     return [...newState];
   }
