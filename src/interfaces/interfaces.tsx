@@ -24,6 +24,7 @@ export interface PurchaseDetails {
   branch: string,
   productName: string,
   productPrice: number,
+  totalPrice: number,
   productQuantity: number
 }
 export interface InputInterfaceProps {
@@ -32,6 +33,7 @@ export interface InputInterfaceProps {
 }
 export interface OutputInterfaceProps {
   state: PurchaseDetails[],
-  total: number,
+  totalPayment: number,
+  setTotalPayment: Function,
   handleChange: Function
 }

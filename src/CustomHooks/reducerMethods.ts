@@ -1,16 +1,17 @@
 import { ActionParams, PurchaseDetails } from "../interfaces/interfaces";
-export const initValue = { clientName: '', clientSeller: '', branch: '', productName: '', productQuantity: 0, productPrice: 0 };
+export const initValue = { clientName: '', clientSeller: '', branch: '', productName: '', productQuantity: 0, productPrice: 0, totalPrice: 0 };
 
 export function reducer(state:PurchaseDetails[], action:ActionParams):PurchaseDetails[] {
     const initCopy = {...initValue};
   if(action.finish) {
     const newState = [...state];
     const lastIndex = state.length - 1;
-    newState[lastIndex].productPrice *= state[lastIndex].productQuantity;
+    newState[lastIndex].totalPrice = state[lastIndex].productPrice * state[lastIndex].productQuantity;
     return [...newState, initCopy]
   }
   if(action.delete !== undefined ) {
-    const newState = state.length === 1 ? state.filter((_element, index)=> index != action.delete) : [initCopy];  
+    //const newState = state.length !== 1 ? state.filter((_element, index)=> index != action.delete) : [initCopy];  
+    const newState = state.filter((_element, index)=> index != action.delete);
     return [...newState];
   }
   const newState = state.map((currentValue, index)=> {

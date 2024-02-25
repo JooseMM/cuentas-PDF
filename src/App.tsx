@@ -6,13 +6,13 @@ import OutputInterface from './Components/OutputInterface';
 
 function App() {
 
-    const  { state, handleChange, total }= useAccountState();
+    const  { state, handleChange, totalPayment, setTotalPayment }= useAccountState();
   return (
     <>
       <Navbar/>
     <main className="main-container">
       <InputInterface handleChange={handleChange} state={state} />
-      <OutputInterface state={state} handleChange={handleChange} total={total}/>
+      <OutputInterface setTotalPayment={setTotalPayment} state={state} handleChange={handleChange} totalPayment={totalPayment}/>
     </main>
     </>
   )
