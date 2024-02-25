@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { InputInterfaceProps } from "../interfaces/interfaces";
 
 function InputInterface ({state, handleChange}:InputInterfaceProps) {

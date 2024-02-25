@@ -13,6 +13,10 @@ function App() {
     <main className="main-container">
       <InputInterface handleChange={handleChange} state={state} />
       <OutputInterface setTotalPayment={setTotalPayment} state={state} handleChange={handleChange} totalPayment={totalPayment}/>
+      <div className="finish-section">
+	<button className="alt-btn">Limpiar</button>
+	<button className="download-btn">Descargar</button>
+      </div>
     </main>
     </>
   )

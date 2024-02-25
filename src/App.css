@@ -11,6 +11,12 @@
   margin: 0;
   font-size: 16px;
 }
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: inherit;
+}
 ul {
   padding: 0;
   margin: 0;
@@ -87,7 +93,7 @@ a {
   flex-direction: column;
   margin-top: 2rem;
 }
-.input-section .add-button {
+.add-button {
   margin-top: 1rem;
   width: 100%;
   background-color: var(--soft-black);
@@ -97,6 +103,25 @@ a {
   padding: 1rem;
   border-radius: 0.2rem;
   font-weight: 600;
+}
+.alt-btn {
+  border: solid 1px var(--soft-black);
+  border-radius: 0.3rem;
+  padding: 0.6rem 3rem;
+}
+.finish-section {
+  display: flex;
+  justify-content: center;
+  margin-block : 2rem;
+}
+.finish-section > .download-btn {
+  margin-left: 1.5rem;
+}
+.download-btn {
+  background-color: var(--soft-black);
+  color: white;
+  border-radius: 0.3rem;
+  padding: 0.6rem 3rem;
 }
 table {
   border-collapse:collapse;
@@ -119,7 +144,7 @@ th {
   color: white;
 }
 td {
-  padding-block: 1.5rem;
+  padding-block: 1.2rem;
   width: 9rem;
   font-size: 16px;
 }
@@ -127,6 +152,7 @@ tr {
   border-bottom: solid 1px var(--soft-black);
 }
 tfoot > tr {
+  border: none;
   text-align: left;
 }
 tfoot th {
@@ -136,6 +162,7 @@ tfoot td {
   padding-block: 0.8rem;
 }
 .client {
+  /* */
 }
 .product { 
   width: 11rem;
