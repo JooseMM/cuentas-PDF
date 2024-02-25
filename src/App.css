@@ -1,5 +1,9 @@
+:root {
+  --soft-black: #292A2B;
+}
 *, * > * {
   box-sizing: border-box;
+  color: var(--soft-black);
   padding: 0;
   margin: 0;
   font-size: 16px;
@@ -16,7 +20,7 @@ main {
 }
 input{
   padding: 0.9rem 1rem;
-  border: none;
+  border: solid 1px var(--soft-black);
   border-radius: 4px;
 }
 h1 {
@@ -69,7 +73,8 @@ h1 {
 .input-section .add-button {
   margin-top: 1rem;
   width: 100%;
-  background-color: wheat;
+  background-color: var(--soft-black);
+  color: white;
   outline: none;
   border: none;
   padding: 1rem;
@@ -84,6 +89,7 @@ thead {
   background-color: #292A2B;
   color: white;
   padding-block: 0.8rem;
+  border-radius: 3px;
 }
 tbody {
   padding: 0;
@@ -93,20 +99,15 @@ tbody {
 th {
   width: 9rem;
   text-align: left;
+  color: white;
 }
 td {
   padding-block: 1.5rem;
   width: 9rem;
   font-size: 16px;
 }
-.product { 
-  width: 11rem;
-}
-.price {
-  width: 7rem;
-}
-.delete {
-  width: 7rem;
+tr {
+  border-bottom: solid 1px var(--soft-black);
 }
 tfoot > tr {
   text-align: left;
@@ -115,12 +116,21 @@ tfoot th {
   text-align: right;
 }
 tfoot td {
-  padding-block: 0;
+  padding-block: 0.8rem;
+}
+.client {
+}
+.product { 
+  width: 11rem;
+}
+.price {
+  width: 7rem;
+}
+.delete {
+  width: 10rem;
+  text-align: center;
 }
 .qty {
   text-align: center;
 
-}
-.delete {
-  text-align: center;
 }

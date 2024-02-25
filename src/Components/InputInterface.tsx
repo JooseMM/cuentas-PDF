@@ -11,6 +11,9 @@ const currentIndex = state.length - 1;
 	      <label htmlFor='productQuantity'>Cantidad</label>
 	      <input type="number" id="productQuantity" 
 	      value={state[currentIndex].productQuantity}
+	      step={1}
+	      min={0}
+	      max={100}
 	      onChange={(e)=> handleChange(undefined, e.target.value, 'productQuantity')}
 	      />
 	  </div>

@@ -12,7 +12,7 @@ function App() {
       <Navbar/>
     <main className="main-container">
       <InputInterface handleChange={handleChange} state={state} />
-      <OutputInterface state={state} total={total}/>
+      <OutputInterface state={state} handleChange={handleChange} total={total}/>
     </main>
     </>
   )

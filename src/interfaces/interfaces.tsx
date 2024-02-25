@@ -14,7 +14,8 @@ export interface Product {
   price: number,
 }
 export interface ActionParams extends PurchaseDetails {
-  finish: boolean
+  finish: boolean,
+  delete: number
 }
 export interface PurchaseDetails {
 [key: string]: string | number | boolean;
@@ -31,5 +32,6 @@ export interface InputInterfaceProps {
 }
 export interface OutputInterfaceProps {
   state: PurchaseDetails[],
-  total: number
+  total: number,
+  handleChange: Function
 }

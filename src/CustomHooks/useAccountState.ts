@@ -1,4 +1,4 @@
-import { FormEvent, useReducer, useState } from "react";
+import { FormEvent, useReducer } from "react";
 import { ActionParams } from "../interfaces/interfaces";
 import { reducer, initValue } from "./reducerMethods";
 

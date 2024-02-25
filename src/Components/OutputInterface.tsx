@@ -1,8 +1,7 @@
 import { OutputInterfaceProps } from "../interfaces/interfaces";
 
-function OutputInterface({state, total}:OutputInterfaceProps){
+function OutputInterface({state, total, handleChange}:OutputInterfaceProps){
 const outputState = state.slice(0, state.length - 1);
-console.log(total)
 return (
       <table className="output-section flex-center">
 	<thead>
@@ -22,7 +21,7 @@ return (
 		<td className="client">{currentValue.clientName}</td>
 		<td className="product">{currentValue.productName}</td>
 		<td className="price">{`$${currentValue.productPrice}`}</td>
-		<td className="delete"><button>Delete</button></td>
+		<td className="delete"><button onClick={()=> handleChange(undefined, index, 'delete')}>Delete</button></td>
 	      </tr>
 	  )
 	})}
