@@ -24,7 +24,7 @@ return (
 		<td className="qty" >{currentValue.productQuantity}</td>
 		<td className="client">{currentValue.clientName}</td>
 		<td className="product">{currentValue.productName}</td>
-		<td className="price">{`$${currentValue.totalPrice}`}</td>
+		<td className="price">{currentValue.totalPrice.toLocaleString('es-ES')}</td>
 		<td className="delete"><button onClick={()=> handleChange(undefined, index, 'delete')}>Delete</button></td>
 	      </tr>
 	  )
@@ -34,7 +34,7 @@ return (
 	<tr>
 	<th></th>
 	<th></th>
-	{ totalPayment > 0 ? <td><b>total: $</b>{totalPayment}</td>: null }
+	{ totalPayment > 0 ? <td><b>total: $</b>{totalPayment.toLocaleString('es-ES')}</td>: null }
 	</tr>
 	</tfoot>
       </table>
