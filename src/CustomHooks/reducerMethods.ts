@@ -13,6 +13,9 @@ export function reducer(state:PurchaseDetails[], action:ActionParams):PurchaseDe
     const newState = state.filter((_element, index)=> index != action.delete);
     return [...newState];
   }
+  if(action.clear) {
+    return [initCopy];
+  }
   const newState = state.map((currentValue, index)=> {
     if(index === state.length - 1) {
       for(const key in currentValue) {

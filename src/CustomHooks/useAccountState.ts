@@ -2,11 +2,11 @@ import { FormEvent, useReducer, useState } from "react";
 import { ActionParams } from "../interfaces/interfaces";
 import { reducer, initValue } from "./reducerMethods";
 
-const onChangePrototype = { clientName: undefined, clientSeller: undefined, branch: undefined, productName: undefined, productQuantity: undefined, totalPrice: undefined, productPrice: undefined, finish: false };
+const onChangePrototype = { clientName: undefined, clientSeller: undefined, branch: undefined, productName: undefined, productQuantity: undefined, totalPrice: undefined, productPrice: undefined, finish: false, clear: false };
 
 export function useAccountState() {
   const [totalPayment, setTotalPayment] = useState(0);
-  const initCopy = Object.create(initValue);
+  const initCopy = {...initValue};
   const [state, dispatch] = useReducer(reducer, [initCopy])
 
   function handleChange(event: FormEvent<HTMLFormElement> | undefined, updateValue: string | number | boolean, key: keyof ActionParams):void {

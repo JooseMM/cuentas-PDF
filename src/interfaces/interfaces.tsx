@@ -15,7 +15,8 @@ export interface Product {
 }
 export interface ActionParams extends PurchaseDetails {
   finish: boolean,
-  delete: number
+  delete: number,
+  clear: boolean
 }
 export interface PurchaseDetails {
 [key: string]: string | number | boolean;
