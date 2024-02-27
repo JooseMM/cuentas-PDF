@@ -14,6 +14,7 @@ const currentIndex = state.length - 1;
 	      step={1}
 	      min={0}
 	      max={100}
+	      required
 	      onChange={(e)=> handleChange(undefined, e.target.value, 'productQuantity')}
 	      />
 	  </div>
@@ -23,6 +24,7 @@ const currentIndex = state.length - 1;
 	      placeholder="Corona Zirconio"
 	      value={state[currentIndex].productName}
 	      onChange={(e)=> handleChange(undefined, e.target.value, 'productName')}
+	      required
 	      />
 	    </div>
 	    </div>
@@ -33,6 +35,7 @@ const currentIndex = state.length - 1;
 	      value={state[currentIndex].productPrice}
 	      step={1000}
 	      min={0}
+	      required
 	      onChange={(e)=> handleChange(undefined, e.target.value, 'productPrice')}
 	      />
 	    </div>
@@ -40,6 +43,7 @@ const currentIndex = state.length - 1;
 	      <label htmlFor='clientName'>Paciente</label>
 	      <input type="text" id="clientName" 
 	      placeholder="Ejem. Jose Moreno"
+	      required
 	      value={state[currentIndex].clientName} 
 	      onChange={(e)=> handleChange(undefined, e.target.value, 'clientName')}
 	      />
@@ -49,6 +53,7 @@ const currentIndex = state.length - 1;
 	    <div className="single-input">
 	      <label htmlFor='clientSeller'>Doctor</label>
 	      <input type="text" id="clientSeller" 
+	      required
 	      placeholder="Ejem. Gonzalo Ramirez"
 	      value={state[0].clientSeller} 
 	      disabled={ state.length > 1 ? true : false }
@@ -59,6 +64,7 @@ const currentIndex = state.length - 1;
 		<label htmlFor='clientBranch'>Clinica</label>
 		<input type="text" id="clientBranch" 
 		placeholder="Ejem. Smile Request"
+		required
 		value={state[0].branch}
 		disabled={ state.length > 1 ? true : false }
 		onChange={(e)=> handleChange(undefined, e.target.value, 'branch')}/>

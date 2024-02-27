@@ -1,12 +1,9 @@
 import { OutputInterfaceProps } from "../interfaces/interfaces";
+import { formatToCurrency } from "../CustomHooks/reducerMethods";
 
 function OutputInterface({state, totalPayment, handleChange}:OutputInterfaceProps){
 const outputState = state.slice(0, state.length - 1);
 
-function formatToCurrency(amout: number):string {
-  console.log("execute");
-  return amout.toLocaleString('es-ES');
-}
 return (
       <table className="output-section flex-center">
 	<thead>
@@ -34,7 +31,7 @@ return (
 	<tr>
 	<th></th>
 	<th></th>
-	{ totalPayment > 0 ? <td><b>Total: $</b>{formatToCurrency(totalPayment)}</td>: null }
+	<td><b>Total: $</b>{formatToCurrency(totalPayment)}</td>
 	</tr>
 	</tfoot>
       </table>

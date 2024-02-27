@@ -1,13 +1,15 @@
+import { NavLink } from "react-router-dom";
+
 const Navbar = () => {
   return (
   <header className="navbar">
-    <span>Jose&#39;Company</span>
+    <span>Generador de Cuentas</span>
     <ul className="nav-links">
       <li>
-	<a href="#" className="current-page">Inicio</a>
+	<NavLink to={'/'} className={({isActive})=> isActive ? "current-page" : "" }>Inicio</NavLink>
       </li>
       <li>
-	<a href="#">Nosotros</a>
+	<NavLink to={'/nosotros'} className={({isActive})=> isActive ? "current-page" : "" }>Nosotros</NavLink>
       </li>
     </ul>
   </header>

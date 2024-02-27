@@ -124,6 +124,7 @@ a {
 .download-btn {
   background-color: var(--soft-black);
   color: white;
+  font-weight: 600;
   border-radius: 0.3rem;
   padding: 0.6rem 3rem;
   opacity: 1;
