@@ -26,4 +26,13 @@ export function reducer(state:PurchaseDetails[], action:ActionParams):PurchaseDe
   })
   return newState;
 }
-
+export function formatToCurrency(amout: number):string {
+  console.log("execute");
+  return amout.toLocaleString('es-ES');
+}
+export function getSpanishDate ():string {
+    const date = new Date();
+    const formattedDate = date.toLocaleString('es', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+    const charToUppercase = formattedDate.charAt(0).toUpperCase();
+    return charToUppercase.concat(formattedDate.slice(1));
+  }

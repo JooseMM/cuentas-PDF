@@ -32,6 +32,9 @@ input{
   border: solid 1px var(--soft-black);
   border-radius: 4px;
 }
+input:disabled {
+  background-color: #E9E9E9;
+}
 h1 {
   font-size: 3.5rem;
   text-align: center;
@@ -64,6 +67,7 @@ a {
 }
 .input-section {
   display: flex;
+  margin-top: 6rem;
   flex-direction: column;
 }
 .input-section .input-row:not(:last-child) {

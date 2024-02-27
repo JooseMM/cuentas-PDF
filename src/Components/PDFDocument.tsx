@@ -3,6 +3,7 @@ import MerriweatherSansBold from "../assets/fonts/MerriweatherSans-Bold.ttf";
 import MerriweatherSansRegular from "../assets/fonts/MerriweatherSans-Regular.ttf";
 import MerriweatherSansLight from "../assets/fonts/MerriweatherSans-Light.ttf";
 import { PDFDocumentProps } from "../interfaces/interfaces";
+import { formatToCurrency, getSpanishDate } from "../CustomHooks/reducerMethods";
 
 function PDFDocument ({ state, totalPayment }:PDFDocumentProps ) {
   Font.register({ family: 'Merriweather Sans', fonts: [
@@ -11,7 +12,6 @@ function PDFDocument ({ state, totalPayment }:PDFDocumentProps ) {
       { src: MerriweatherSansRegular, fontWeight: 'normal', fontStyle: 'normal' },
    ]}); 
    const doctor = state[0].clientSeller;
-   const currentDate = '26 de Febrero, 2024';
 const styles = StyleSheet.create({
   page: { backgroundColor: 'white', fontFamily: 'Merriweather Sans', paddingHorizontal: '5%', color: '#292A2B' },
   header: {marginHorizontal: 'auto', marginTop: '20%', fontSize: '60pt', fontWeight: 600 },
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
 	  </View>
 	  <View style={styles.sideInfo}>
 	    <Text>Dr/a.  {doctor}</Text>
-	    <Text>{currentDate}</Text>
+	    <Text>{getSpanishDate()}</Text>
 	  </View>
 	  <View style={styles.table}>
 	    <View style={styles.tableHeaderContainer}>
@@ -55,17 +55,17 @@ const styles = StyleSheet.create({
 	      { state.map((element, index )=> {
 		if(index !== state.length -1) {
 		    return (
-		    <View style={styles.bodyRow}>
-		      <View key={index} style={styles.unitBodyRow} ><Text>{element.productQuantity}</Text></View>
-		      <View key={index} style={styles.clientBodyRow} ><Text>{element.clientName}</Text></View>
-		      <View key={index} style={styles.productBodyRow} ><Text>{element.productName}</Text></View>
-		      <View key={index} style={styles.priceBodyRow} ><Text>${element.totalPrice}</Text></View>
+		    <View key={index} style={styles.bodyRow}>
+		      <View style={styles.unitBodyRow} ><Text>{element.productQuantity}</Text></View>
+		      <View style={styles.clientBodyRow} ><Text>{element.clientName}</Text></View>
+		      <View style={styles.productBodyRow} ><Text>{element.productName}</Text></View>
+		      <View style={styles.priceBodyRow} ><Text>${formatToCurrency(element.totalPrice)}</Text></View>
 		    </View>
 			)
 		    }})}
 	    </View>
 	    <View style={styles.total}>
-	      <Text style={styles.bold}>Total: </Text><Text> ${totalPayment}</Text>
+	      <Text style={styles.bold}>Total: </Text><Text> ${formatToCurrency(totalPayment)}</Text>
 	    </View>
 	</View >
 	<View wrap={false} style={styles.bankAccount}>

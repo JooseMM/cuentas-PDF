@@ -7,9 +7,6 @@ const Navbar = () => {
 	<a href="#" className="current-page">Inicio</a>
       </li>
       <li>
-	<a href="#">Contacto</a>
-      </li>
-      <li>
 	<a href="#">Nosotros</a>
       </li>
     </ul>

@@ -50,7 +50,8 @@ const currentIndex = state.length - 1;
 	      <label htmlFor='clientSeller'>Doctor</label>
 	      <input type="text" id="clientSeller" 
 	      placeholder="Ejem. Gonzalo Ramirez"
-	      value={state[currentIndex].clientSeller} 
+	      value={state[0].clientSeller} 
+	      disabled={ state.length > 1 ? true : false }
 	      onChange={(e)=> handleChange(undefined, e.target.value, 'clientSeller')}
 	      />
 	    </div>
@@ -58,7 +59,8 @@ const currentIndex = state.length - 1;
 		<label htmlFor='clientBranch'>Clinica</label>
 		<input type="text" id="clientBranch" 
 		placeholder="Ejem. Smile Request"
-		value={state[currentIndex].branch}
+		value={state[0].branch}
+		disabled={ state.length > 1 ? true : false }
 		onChange={(e)=> handleChange(undefined, e.target.value, 'branch')}/>
 	      </div>
 	    </div>

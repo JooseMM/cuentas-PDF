@@ -7,13 +7,13 @@ import PDFDocument from './Components/PDFDocument';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 
 function App() {
-    const  { state, handleChange, totalPayment, setTotalPayment }= useAccountState();
+    const  { state, handleChange, totalPayment }= useAccountState();
   return (
     <>
       <Navbar/>
     <main className="main-container">
       <InputInterface handleChange={handleChange} state={state} />
-      <OutputInterface setTotalPayment={setTotalPayment} state={state} handleChange={handleChange} totalPayment={totalPayment}/>
+      <OutputInterface state={state} handleChange={handleChange} totalPayment={totalPayment}/>
       <div className="finish-section">
 	<button className="alt-btn" onClick={()=> handleChange(undefined, true, 'clear')}>Limpiar</button>
 	<PDFDownloadLink  className="download-btn" document={<PDFDocument state={state} totalPayment={totalPayment}/>} fileName='account-details'>Descargar</PDFDownloadLink>

@@ -1,4 +1,4 @@
-import { FormEvent, useReducer, useState } from "react";
+import { useEffect, FormEvent, useReducer, useState } from "react";
 import { ActionParams } from "../interfaces/interfaces";
 import { reducer, initValue } from "./reducerMethods";
 
@@ -15,6 +15,10 @@ export function useAccountState() {
     finishValue[key] = updateValue;
     dispatch(finishValue);
   }
-  return { handleChange, state, totalPayment, setTotalPayment }
+  useEffect(()=> {
+  setTotalPayment(()=> state.reduce((accumulator, currentElement)=> accumulator + currentElement.totalPrice, 0))
+}, [state.length])
+
+  return { handleChange, state, totalPayment }
 }
 

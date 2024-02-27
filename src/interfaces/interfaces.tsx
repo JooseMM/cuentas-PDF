@@ -35,7 +35,6 @@ export interface InputInterfaceProps {
 export interface OutputInterfaceProps {
   state: PurchaseDetails[],
   totalPayment: number,
-  setTotalPayment: Function,
   handleChange: Function
 }
 export interface PDFDocumentProps {
