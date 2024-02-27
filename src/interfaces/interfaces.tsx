@@ -38,3 +38,7 @@ export interface OutputInterfaceProps {
   setTotalPayment: Function,
   handleChange: Function
 }
+export interface PDFDocumentProps {
+  state: PurchaseDetails[],
+  totalPayment: number,
+}
