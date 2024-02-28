@@ -75,14 +75,14 @@ a {
 }
 .input-section .input-row {
   display: flex;
-  justify-items: center;
+  justify-content: center;
 }
-.input-row .single-input {
+.single-input {
   display: flex;
   flex-direction: column;
   width: 22rem;
 }
-.input-row .single-input:not(:last-child) {
+.single-input:not(:last-child) {
   margin-right: 2rem;
 }
 .single-input > input {
@@ -184,3 +184,83 @@ tfoot td {
   text-align: center;
 
 }
+@media only screen and (max-width: 800px) {
+  .main-container {
+    width: auto;
+    max-width: 500px;
+  }
+  .input-row {
+    flex-direction: column;
+  }
+  .single-input {
+    display: flex;
+    justify-content: center;
+    margin-inline: auto;
+    width: 90%;
+  }
+  .input-row > .single-input:not(:last-child) {
+    margin: 0;
+    margin-inline: auto;
+    margin-bottom: 1rem;
+  }
+  .add-button {
+    width: 90%;
+    margin-inline: auto;
+  }
+  .qty {
+    width: 7rem;
+  }
+  .delete {
+    display: none;
+  }
+  .client {
+    width: 9rem;
+    padding-right: 1rem;
+  }
+
+  .product {
+    width: 5rem;
+  }
+  .price {
+    width: 9rem;
+    text-align: center;
+  }
+  table {
+    width: 90%;
+    margin-inline: auto;
+  }
+  tfoot tr th:first-child { 
+    display: none; 
+  }
+  .finish-section > .download-btn, .alt-btn {
+    padding-block: 1rem;
+  }
+}
+/* 
+.qty {
+width: 5rem;
+}
+.delete {
+display: none;
+}
+.client {
+width: 5rem;
+}
+
+.product {
+width: 5rem;
+padding-left: 1.5rem;
+}
+.price {
+width: 9rem;
+text-align: center;
+}
+table {
+width: 90%;
+margin-inline: auto;
+}
+
+tbody .product { padding-left: 1.5rem; }
+tbody .client { padding-left: 0.5rem; }
+ * */
+

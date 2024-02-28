@@ -8,8 +8,8 @@ return (
       <table className="output-section flex-center">
 	<thead>
 	  <tr>
-	    <th className="qty">Cantidad</th>
-	    <th>Paciente</th>
+	    <th className="qty">Uds.</th>
+	    <th className="client">Paciente</th>
 	    <th className="product">Producto</th> <th className="price">Precio</th>
 	    <th className="delete">Delete</th>
 	  </tr>
@@ -31,7 +31,7 @@ return (
 	<tr>
 	<th></th>
 	<th></th>
-	<td><b>Total: $</b>{formatToCurrency(totalPayment)}</td>
+	<td><b>Total:$</b>{formatToCurrency(totalPayment)}</td>
 	</tr>
 	</tfoot>
       </table>
