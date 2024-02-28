@@ -235,32 +235,8 @@ tfoot td {
   .finish-section > .download-btn, .alt-btn {
     padding-block: 1rem;
   }
+  .menu-delete-header {
+    
+      padding-right: 0rem;
+  }
 }
-/* 
-.qty {
-width: 5rem;
-}
-.delete {
-display: none;
-}
-.client {
-width: 5rem;
-}
-
-.product {
-width: 5rem;
-padding-left: 1.5rem;
-}
-.price {
-width: 9rem;
-text-align: center;
-}
-table {
-width: 90%;
-margin-inline: auto;
-}
-
-tbody .product { padding-left: 1.5rem; }
-tbody .client { padding-left: 0.5rem; }
- * */
-

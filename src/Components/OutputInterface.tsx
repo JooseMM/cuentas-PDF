@@ -1,8 +1,10 @@
 import { OutputInterfaceProps } from "../interfaces/interfaces";
 import { formatToCurrency } from "../CustomHooks/reducerMethods";
+import { useState } from "react";
 
 function OutputInterface({state, totalPayment, handleChange}:OutputInterfaceProps){
 const outputState = state.slice(0, state.length - 1);
+const [menuOpenAt, setMenuOpenAt] = useState(-1);
 
 return (
       <table className="output-section flex-center">
@@ -17,12 +19,22 @@ return (
 	<tbody>
 	{outputState.map((currentValue, index) => {
 	  return (
-	      <tr key={index}>
+	      menuOpenAt != index ?
+
+	      <tr key={index} onClick={()=> setMenuOpenAt(index)} >
 		<td className="qty" >{currentValue.productQuantity}</td>
 		<td className="client">{currentValue.clientName}</td>
 		<td className="product">{currentValue.productName}</td>
 		<td className="price">{formatToCurrency(currentValue.totalPrice)}</td>
 		<td className="delete"><button onClick={()=> handleChange(undefined, index, 'delete')}>Delete</button></td>
+	      </tr>
+
+	      : 
+
+	      <tr className="table-delete-menu" onClick={()=> setMenuOpenAt(-1)}>
+	      <td></td>
+	      <td colSpan={2} className="menu-delete-header">¿Deseas eliminar este cargo?</td>
+	      <td><button onClick={()=> handleChange(undefined, index, 'delete')}>Si</button></td>
 	      </tr>
 	  )
 	})}
