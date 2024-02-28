@@ -91,12 +91,6 @@ a {
 .single-input > label {
   margin-bottom: 0.3rem;
 }
-.output-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-top: 2rem;
-}
 .add-button {
   margin-top: 1rem;
   width: 100%;
@@ -129,60 +123,48 @@ a {
   padding: 0.6rem 3rem;
   opacity: 1;
 }
-table {
-  border-collapse:collapse;
-  width: 45rem;
+.output-section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
 }
-thead {
-  background-color: #292A2B;
-  color: white;
-  padding-block: 0.8rem;
-  border-radius: 3px;
-}
-tbody {
-  padding: 0;
-  margin: 0;
-  border: none;
-}
-th {
-  width: 9rem;
-  text-align: left;
+.output-section li {
   color: white;
 }
-td {
+.grid-table {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+}
+.table-head {
+  background-color: var(--soft-black);
+  padding-block: 1rem;
+  border-radius: 5px;
+  font-weight: 600;
+}
+.body-table {
   padding-block: 1.2rem;
-  width: 9rem;
-  font-size: 16px;
-}
-tr {
   border-bottom: solid 1px var(--soft-black);
+  align-items: center;
 }
-tfoot > tr {
-  border: none;
-  text-align: left;
+.bold {
+  font-weight: 600;
 }
-tfoot th {
-  text-align: right;
+.delete-menu {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-tfoot td {
-  padding-block: 0.8rem;
+.delete-menu > span {
+  margin-right: 3rem;
 }
-.client {
-  /* */
-}
-.product { 
-  width: 11rem;
-}
-.price {
-  width: 7rem;
-}
-.delete {
-  width: 10rem;
-  text-align: center;
-}
-.qty {
-  text-align: center;
-
+.delete-button {
+  background-color: var(--soft-black);
+  color: white;
+  padding: 0.8rem 3rem;
+  border-radius: 5px;
+  font-weight: 600;
 }
 @media only screen and (max-width: 800px) {
   .main-container {
@@ -207,36 +189,7 @@ tfoot td {
     width: 90%;
     margin-inline: auto;
   }
-  .qty {
-    width: 7rem;
-  }
-  .delete {
-    display: none;
-  }
-  .client {
-    width: 9rem;
-    padding-right: 1rem;
-  }
-
-  .product {
-    width: 5rem;
-  }
-  .price {
-    width: 9rem;
-    text-align: center;
-  }
-  table {
-    width: 90%;
-    margin-inline: auto;
-  }
-  tfoot tr th:first-child { 
-    display: none; 
-  }
   .finish-section > .download-btn, .alt-btn {
     padding-block: 1rem;
-  }
-  .menu-delete-header {
-    
-      padding-right: 0rem;
   }
 }
