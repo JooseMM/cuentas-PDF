@@ -181,7 +181,14 @@ a {
   justify-content: center;
   align-items: center;
 }
+.mobile-menu-btn {
+    display: none;
+}
 @media only screen and (max-width: 800px) {
+
+  .mobile-menu-btn {
+    display: block;
+  }
   .navbar {
     position: relative;
   }
@@ -242,7 +249,6 @@ a {
 }
 
 @media only screen and (max-width: 500px) {
-  
   .table-head {
     border-radius: 0;
   }
