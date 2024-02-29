@@ -10,10 +10,10 @@ return (
       <div className="output-section ">
 	  <ul className="table-head grid-table">
 	    <li >Uds.</li>
-	    <li >Paciente</li>
+	    <li className="client-column">Paciente</li>
 	    <li >Producto</li>
 	    <li >Precio</li>
-	    <li >Delete</li>
+	    <li className="desktop-delete-btn">Delete</li>
 	  </ul>
 	  <ul>
 	    {outputState.map((element, index)=> {
@@ -24,13 +24,15 @@ return (
 		<span className="bold">{element.clientName}</span>
 		<span>{element.productName}</span>
 		<span className="bold">$ {formatToCurrency(element.totalPrice)}</span>
-		<button onClick={() => handleChange(undefined, index, 'delete')}>Delete</button>
+		<button className="desktop-delete-btn" onClick={() => handleChange(undefined, index, 'delete')}>Delete</button>
 	      </li>
 	      : 
-	      <li className="body-table delete-menu" onClick={() => setMenuOpenAt(-1)}><span>¿Deseas eleminar este cargo?</span><button className="delete-button">Si</button></li>
+	      <li className="body-table delete-menu" onClick={() => setMenuOpenAt(-1)}><span>¿Deseas eleminar este cargo?</span><button onClick={()=>handleChange(undefined, index, 'delete')} className="delete-button">Si</button></li>
 	      )
 	    })}
+	    <li className="total-payment-row"><span className="bold">TOTAL:&nbsp;</span>${formatToCurrency(totalPayment)}</li>
 	  </ul>
+
       </div>
       )
 }
