@@ -184,6 +184,43 @@ a {
 .mobile-menu-btn {
     display: none;
 }
+.about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  text-align: center;
+  margin-inline: auto;
+}
+.about-container h1 {
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;
+}
+.about-container p {
+  opacity: 0.8;
+}
+.portfolio-link {
+  background-color: var(--soft-black);
+  opacity: 1;
+  padding: 0.8rem 2.5rem;
+  color: white;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.btn-container {
+  margin-top: 1.8rem;
+  display: flex;
+  align-items: center;
+}
+.btn-container a:last-child {
+  color: var(--soft-black);
+  opacity: 0.9;
+  margin-left: 1.5rem;
+  font-weight: 600;
+}
+
 @media only screen and (max-width: 800px) {
 
   .mobile-menu-btn {
