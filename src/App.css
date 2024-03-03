@@ -2,6 +2,8 @@
 
 :root {
   --soft-black: #292A2B;
+  --delete-btn-bg: #C1322E;
+  --delete-btn-border: #7B1715;
 }
 *, * > * {
   font-family: "Merriweather Sans", sans-serif;
@@ -159,19 +161,18 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-block: 1.2rem;
 }
-.delete-menu > span {
-  margin-right: 3rem;
-}
-.delete-button {
-  background-color: var(--soft-black);
-  color: white;
-  padding: 0.8rem 3rem;
-  border-radius: 5px;
-  font-weight: 600;
-}
-.client-column {
-  transform: translateX(-10px);
+.mobile-delete-button {
+    background-color: var(--delete-btn-bg);
+    padding: 0.4rem 1.8rem;
+    border-radius: 5px;
+    border: solid 2px var(--delete-btn-border);
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-left: 2rem;
+    font-weight: 600
 }
 .total-payment-row, .total-payment-row > .bold {
   font-size: 1.2rem;
@@ -194,8 +195,8 @@ a {
   margin-inline: auto;
 }
 .about-container h1 {
-  margin-bottom: 2rem;
-  margin-top: 0.5rem;
+  margin-bottom: 1.2rem;
+  margin-top: 0.3rem;
 }
 .about-container p {
   opacity: 0.8;
@@ -217,14 +218,56 @@ a {
 .btn-container a:last-child {
   color: var(--soft-black);
   opacity: 0.9;
-  margin-left: 1.5rem;
   font-weight: 600;
 }
+  .desktop-delete-btn {
+    display: flex;
+    background-color: var(--delete-btn-bg);
+    padding: 0.1rem 1.5rem;
+    border-radius: 5px;
+    border: solid 2px var(--delete-btn-border);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .delete-column {
+    display: none;
+  }
+  .wrap-text {
+    text-align: center;
+    max-width: 7ch;
+  }
 
 @media only screen and (max-width: 800px) {
 
   .mobile-menu-btn {
     display: block;
+  }
+  .desktop-delete-btn {
+    display: none;
+  }
+  .about-container {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 1.5rem;
+  }
+ 
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  .portfolio-link {
+    margin: 0;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 1.2rem 3rem;
+  }
+  .btn-container > a:last-child {
+    letter-spacing: 2px;
   }
   .navbar {
     position: relative;
@@ -277,9 +320,6 @@ a {
   .finish-section > .download-btn, .alt-btn {
     padding-block: 1rem;
   }
-  .desktop-delete-btn {
-    display: none;
-  }
  .grid-table {
   grid-template-columns: repeat(4, 1fr);
   }
@@ -288,6 +328,9 @@ a {
 @media only screen and (max-width: 500px) {
   .table-head {
     border-radius: 0;
+  } 
+  .last-paragraph {
+    margin-top: 1rem;
   }
  .finish-section > .download-btn {
     margin-left: 0.5rem;
@@ -296,6 +339,7 @@ a {
   .alt-btn {
     padding-inline: 2.5rem;
   }
+  
 }
 @media only screen and (max-width: 300px) {
   .finish-section {
