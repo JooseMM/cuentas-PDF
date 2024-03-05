@@ -1,7 +1,7 @@
 # Cuentas PDF
 ¡Hola! Este proyecto nació por la necesidad de automatizar una tarea que tenía en un antiguo trabajo, la cual involucraba la utilización de diferentes programas (editores de texto y calculadoras) para generar cuentas de cobro personalizadas en formato PDF, para clientes mensualmente.  
 ## Desarrollo
-La app se desarrolló al rededor del state hook useReducer en React JS, donde se tiene un arreglo a que se le agrega un objeto en su última posición cada vez que el usuario ingresa un nuevo cargo.
+La app se desarrolló al rededor del state hook useReducer en React JS, como a su vez se utilizo Vanilla CSS, Typescript, Vite y Figma para la creacion de la interface.
 ## Librerias
 Una de las librerías más importantes en este proyecto es React-PDF, muy útil a la hora de generar documentos PDF utilizando una sintax prácticamente igual a la de React Native
 ## Codigo Libre
