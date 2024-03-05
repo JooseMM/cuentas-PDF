@@ -10,8 +10,8 @@ return (
       <div className="output-section ">
 	  <ul className="table-head grid-table">
 	    <li>Uds.</li>
-	    <li >Paciente</li>
-	    <li >Producto</li>
+	    <li className="client-name">Paciente</li>
+	    <li>Producto</li>
 	    <li>Precio</li>
 	    <li className="delete-column">Delete</li>
 	  </ul>
@@ -23,9 +23,9 @@ return (
 	      : 
 	      <li className="grid-table body-table" onClick={()=> window.innerWidth < 800 ? setMenuOpenAt(index) : null}>
 		<span>{element.productQuantity}</span>
-		<span className="wrap-text">{element.clientName}</span>
+		<span className="wrap-text client-name">{element.clientName}</span>
 		<span className="wrap-text">{element.productName}</span>
-		<span>$&nbsp;&nbsp;{formatToCurrency(element.totalPrice)}</span>
+		<span>$&nbsp;{formatToCurrency(element.totalPrice)}</span>
 		<button className="desktop-delete-btn" onClick={() => handleChange(undefined, index, 'delete')}>
 		  <img src={DeleteSVG} width={30} height={30} alt="delete charge"/>
 		</button>

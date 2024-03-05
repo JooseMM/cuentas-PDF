@@ -5,7 +5,7 @@ function Footer () {
   <footer>
     <ul>
       <li><Link to={"/"}>Cuentas de Cobro</Link></li>
-      <li>Copyright</li>
+      <li>Copyright © 2024</li>
     </ul>
     <ul>
       <li>Paginas</li>

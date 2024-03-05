@@ -7,7 +7,7 @@ const Navbar = () => {
 const [toggleMobileMenu, setToggleMobileMenu] = useState(false);
   return (
   <header className="navbar">
-    <span className="bold">Cuentas de Cobro</span>
+    <a className="bold">Cuentas de Cobro</a>
     <button className="mobile-menu-btn" onClick={() => setToggleMobileMenu((prev)=> !prev)}><img src={ toggleMobileMenu ? CloseMenuBtn : OpenMenuBtn} width={45} height={30} alt="toggle-menu"/></button>
     <ul className="nav-links" style={toggleMobileMenu ? {display: "flex"} : {}}>
       <li>
