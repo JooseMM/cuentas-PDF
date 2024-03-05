@@ -1,30 +1,8 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+#Cuentas PDF
+¡Hola! Este proyecto nació por la necesidad de automatizar una tarea que tenía en un antiguo trabajo, la cual involucraba la utilización de diferentes programas (editores de texto y calculadoras) para generar cuentas de cobro personalizadas en formato PDF, para clientes mensualmente.  
+## Desarrollo
+La app se desarrolló al rededor del state hook useReducer en React JS, donde se tiene un arreglo a que se le agrega un objeto en su última posición cada vez que el usuario ingresa un nuevo cargo.
+## Librerias
+Una de las librerías más importantes en este proyecto es React-PDF, una librería muy útil a la hora de generar documentos PDF utilizando una sintax prácticamente igual a la de React Native
+## Codigo Libre
+Eres libre de modificar o usar en su estado actual este proyecto de manera gratuita, agradecería mucho el ser mencionado, aunque no es necesario. Cabe destacar que no me hago responsable de cualquier implicancia legal que puedan tener terceros por el mal uso de este código, este fue pensado exclusivamente para uso personal y recreaciónal.  
