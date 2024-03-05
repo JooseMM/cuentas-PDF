@@ -15,7 +15,7 @@ function Home() {
 	  <OutputInterface state={state} handleChange={handleChange} totalPayment={totalPayment}/>
 	  <div className="finish-section">
 	    <button className="alt-btn" onClick={()=> handleChange(undefined, true, 'clear')}>Limpiar</button>
-	    <PDFDownloadLink  className="download-btn" document={<PDFDocument state={state} totalPayment={totalPayment}/>} fileName='account-details'>Descargar</PDFDownloadLink>
+	    <PDFDownloadLink  className="download-btn" document={<PDFDocument state={state} totalPayment={totalPayment}/>} fileName={`cuenta de cobro ${state[0].clientSeller}`}>Descargar</PDFDownloadLink>
 	  </div>
 	</div> : null }
       </main>
