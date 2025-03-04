@@ -1,0 +1,57 @@
+import { StyleSheet } from "@react-pdf/renderer";
+
+export const documentStyles = StyleSheet.create({
+  page: {
+    backgroundColor: "white",
+    fontFamily: "Merriweather Sans",
+    paddingHorizontal: "5%",
+    color: "#292A2B",
+  },
+  header: {
+    marginHorizontal: "auto",
+    marginTop: "20%",
+    fontSize: "60pt",
+    fontWeight: 600,
+  },
+  sideInfo: {
+    flex: "true",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    fontSize: "15pt",
+    fontWeight: 400,
+    marginTop: "50pt",
+  },
+  tableHeaderContainer: {
+    backgroundColor: "#292A2B",
+    color: "white",
+    flexDirection: "row",
+    paddingHorizontal: "30pt",
+    fontWeight: 400,
+    paddingVertical: "10pt",
+    borderRadius: "3pt",
+  },
+  tableUnit: { marginRight: "35pt" },
+  table: { marginTop: "30pt" },
+  tableClient: { marginRight: "100pt" },
+  tableProduct: { marginRight: "90pt" },
+  unitBodyRow: { width: "105pt", textAlign: "center" },
+  clientBodyRow: { width: "175pt", textAlign: "left", fontWeight: 400 },
+  productBodyRow: { width: "165pt", textAlign: "left" },
+  priceBodyRow: { width: "90pt", textAlign: "left", fontWeight: 400 },
+  tableBody: { flexDirection: "column", fontSize: "15pt", fontWeight: 100 },
+  bodyRow: {
+    paddingVertical: "13pt",
+    flexDirection: "row",
+    borderBottomStyle: "solid",
+    borderBottomWidth: "1pt",
+  },
+  bankAccount: { marginTop: "15%", textAlign: "center" },
+  total: {
+    textAlign: "center",
+    paddingVertical: "10pt",
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  bold: { fontWeight: 600 },
+  row: { flexDirection: "row", justifyContent: "center" },
+});

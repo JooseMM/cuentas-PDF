@@ -1,0 +1,21 @@
+.custom-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-input-container .custom-input {
+  width: 100%;
+}
+
+.custom-input {
+  padding: 0.8rem 1rem;
+  border: solid 0.5px var(--soft-white);
+  font-weight: 300;
+  border-radius: 0.3rem;
+}
+
+.custom-input-container .input-label {
+  margin-left: 2rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}

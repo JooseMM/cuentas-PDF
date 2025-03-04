@@ -1,0 +1,23 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.output-section {
+  margin-top: 3rem;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 60rem) {
+  .main-container {
+    margin-top: 5rem;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .output-section {
+    width: 100%;
+    max-width: 45rem;
+    margin-left: 5rem;
+    margin-top: 8rem;
+  }
+}

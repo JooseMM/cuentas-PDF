@@ -1,0 +1,42 @@
+.input-info-section {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-bottom: 2.5rem;
+}
+.input-info-section div:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.title {
+  font-size: 2.5rem;
+  margin: 2rem auto;
+}
+.add-button {
+  width: 100%;
+  background-color: var(--soft-black);
+  color: white;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  border-radius: 0.2rem;
+  font-weight: 600;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 2rem;
+  justify-content: center;
+  width: 100%;
+  margin-inline: auto;
+  max-width: 35rem;
+}
+
+@media (min-width: 60rem) {
+  form {
+    margin-inline: 0;
+  }
+  .title {
+    margin-top: 0;
+  }
+}

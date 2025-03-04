@@ -1,0 +1,41 @@
+table {
+  width: 100%;
+  max-width: 40rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+thead {
+  background-color: var(--soft-black);
+  outline: none;
+  border: none;
+  border-collapse: collapse;
+}
+
+th {
+  color: white;
+  padding-block: 0.5rem;
+}
+
+.sm-column {
+  max-width: 1.5rem;
+}
+.md-column {
+  max-width: 3.5rem;
+}
+
+tbody .selected-tr {
+  background-color: #e9e9e9;
+}
+tbody td {
+  color: var(--soft-black);
+  padding-block: 1rem;
+}
+@media (min-width: 60rem) {
+  table {
+    max-width: 50rem;
+  }
+  tr {
+    border-bottom: solid 1px var(--soft-black);
+  }
+}
