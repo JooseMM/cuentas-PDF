@@ -7,8 +7,8 @@ export const singleChargeInitialState: Charge = {
 };
 
 export const orderInitialState: Order = {
-  clientName: "Jose Moreno",
-  clientCompany: "Empresa Fitc",
-  charges: [{ productName: 'landing page', productPrice: 100, productQuantity: 1}],
+  clientName: "",
+  clientCompany: "",
+  charges: [],
   totalCharge: 0,
 };

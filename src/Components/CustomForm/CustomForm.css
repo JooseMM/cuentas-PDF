@@ -11,17 +11,6 @@
   font-size: 2.5rem;
   margin: 2rem auto;
 }
-.add-button {
-  width: 100%;
-  background-color: var(--soft-black);
-  color: white;
-  outline: none;
-  border: none;
-  padding: 1rem;
-  border-radius: 0.2rem;
-  font-weight: 600;
-}
-
 form {
   display: flex;
   flex-direction: column;
@@ -31,7 +20,6 @@ form {
   margin-inline: auto;
   max-width: 35rem;
 }
-
 @media (min-width: 60rem) {
   form {
     margin-inline: 0;

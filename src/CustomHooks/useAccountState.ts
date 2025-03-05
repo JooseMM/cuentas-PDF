@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Charge } from "../Models";
 import { orderInitialState, singleChargeInitialState } from "./initialState";
 import { Order } from "../Models/Order";
@@ -8,21 +8,30 @@ export function useCustomFormState() {
   const [singleCharge, setSingleCharge] = useState<Charge>(
     singleChargeInitialState,
   );
-  useEffect(() => { 
-      console.log(order);
-    }, [order]);
-    const handleClientInfoChange = (event: ChangeEvent<HTMLInputElement>) => {
-      setOrder((prev) => ({ ...prev, [event.target.name]: event.target.value }));
-    };
+  const handleClientInfoChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setOrder((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  };
 
-    const handleChargeChange = (event: ChangeEvent<HTMLInputElement>) => {
-      setSingleCharge((prev) => ({
+  const handleChargeChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    setSingleCharge((prev) => ({
       ...prev,
       [event.target.name]: event.target.value,
     }));
   };
 
-  const handleSumit = (event: FormEvent<HTMLFormElement>) => {
+  const handleDelete = (target: number): void => {
+    setOrder((prev) => ({
+      ...prev,
+      charges: prev.charges.filter((_, index) => index !== target),
+    }));
+  };
+
+  const handleClear = (): void => {
+    setOrder({ ...orderInitialState });
+    setSingleCharge({ ...singleChargeInitialState });
+  };
+
+  const handleSumit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     const newCharge = singleCharge.productQuantity * singleCharge.productPrice;
     setOrder((prev) => ({
@@ -37,5 +46,7 @@ export function useCustomFormState() {
     handleChargeChange,
     handleClientInfoChange,
     handleSumit,
+    handleDelete,
+    handleClear,
   };
 }

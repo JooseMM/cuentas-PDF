@@ -2,8 +2,8 @@
 
 :root {
   --soft-black: #292a2b;
-  --delete-btn-bg: #c1322e;
-  --delete-btn-border: #7b1715;
+  --red-primary: #c1322e;
+  --red-secundary: #7b1715;
   --soft-white: #d4d4d5;
   --dark-gray: #545555;
 }
@@ -50,4 +50,15 @@ button {
 ul,
 ol {
   list-style: none;
+}
+
+.main-button {
+  width: 100%;
+  background-color: var(--soft-black);
+  color: white;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  border-radius: 0.2rem;
+  font-weight: 600;
 }

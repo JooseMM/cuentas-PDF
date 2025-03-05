@@ -1,4 +1,5 @@
-import DeleteSVG from "../../assets/delete.svg";
+import deleteSvg from "../../assets/delete.svg";
+import repeatSvg from "../../assets/repeat.svg";
 import { Charge } from "../../Models";
 import { useState } from "react";
 import { currencyFormatter } from "../../Utils/currencyFormatter";
@@ -6,10 +7,11 @@ import "./ChargeTable.css";
 
 interface Props {
   chargeList: Charge[];
-  deleteAt: (index: number) => void;
+  handleDelete: (index: number) => void;
+  handleClear: () => void;
 }
 
-function ChargeTable({ chargeList, deleteAt }: Props) {
+function ChargeTable({ chargeList, handleDelete, handleClear }: Props) {
   const [selectedCharge, setSelectedCharge] = useState<number>(-1);
 
   return (
@@ -29,7 +31,9 @@ function ChargeTable({ chargeList, deleteAt }: Props) {
               <tr
                 className={selectedCharge === index ? "selected-tr" : ""}
                 key={index}
-                onClick={() => setSelectedCharge(index)}
+                onClick={() =>
+                  setSelectedCharge((prev) => (prev === index ? -1 : index))
+                }
               >
                 <td className="sm-column">{charge.productQuantity}</td>
                 <td className="md-column">{charge.productName}</td>
@@ -43,15 +47,35 @@ function ChargeTable({ chargeList, deleteAt }: Props) {
               </tr>
             );
           })}
+          <tr>
+            <td colSpan={4} className="form-total">
+              Total:
+              <b>
+                {" $" +
+                  currencyFormatter(
+                    chargeList.reduce(
+                      (acc, crt) =>
+                        acc + crt.productPrice * crt.productQuantity,
+                      0,
+                    ),
+                  )}
+              </b>
+            </td>
+          </tr>
         </tbody>
       </table>
       <div>
-        <div className="finish-section">
+        <div className="action-section">
           <button
-            className="desktop-delete-btn"
-            onClick={() => deleteAt(selectedCharge)}
+            className="form-delete-item"
+            onClick={() => handleDelete(selectedCharge)}
+            disabled={selectedCharge < 0}
           >
-            <img src={DeleteSVG} width={30} height={30} alt="delete charge" />
+            <img src={deleteSvg} width="30" height="30" alt="delete charge" />
+          </button>
+          <button className="main-button download-action">Descargar</button>
+          <button className="form-repeat" onClick={handleClear}>
+            <img src={repeatSvg} width="30" height="30" />
           </button>
         </div>
       </div>

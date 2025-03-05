@@ -7,8 +7,6 @@ table {
 
 thead {
   background-color: var(--soft-black);
-  outline: none;
-  border: none;
   border-collapse: collapse;
 }
 
@@ -17,25 +15,68 @@ th {
   padding-block: 0.5rem;
 }
 
+table tr {
+  cursor: pointer;
+}
+
+td {
+  border-bottom: 1px solid var(--soft-white);
+}
+
 .sm-column {
   max-width: 1.5rem;
 }
 .md-column {
   max-width: 3.5rem;
 }
+.form-total {
+  border: none;
+  font-size: 1.2rem;
+}
+.form-total b {
+  font-size: 1.2rem;
+}
 
 tbody .selected-tr {
   background-color: #e9e9e9;
+  border: solid 1px red;
 }
 tbody td {
   color: var(--soft-black);
   padding-block: 1rem;
 }
+.form-delete-item {
+  background-color: var(--red-primary);
+  border: 1px solid var(--red-secundary);
+}
+.action-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.action-section button:disabled {
+  opacity: 0.5;
+}
+.action-section button {
+  height: 60px;
+  padding-inline: 1rem;
+  display: flex;
+  border-radius: 0.3rem;
+  justify-content: center;
+  align-items: center;
+}
+.action-section button:not(:last-child) {
+  margin-right: 1rem;
+}
+.download-action {
+  max-width: 16rem;
+}
+.form-repeat {
+  border-radius: 0.3rem;
+  border: 1px solid #545555;
+}
 @media (min-width: 60rem) {
   table {
     max-width: 50rem;
-  }
-  tr {
-    border-bottom: solid 1px var(--soft-black);
   }
 }
