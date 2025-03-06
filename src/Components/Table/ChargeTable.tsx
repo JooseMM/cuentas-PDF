@@ -1,6 +1,7 @@
 import deleteSvg from "../../assets/delete.svg";
 import repeatSvg from "../../assets/repeat.svg";
-import { useMemo, useState } from "react";
+import downloadSvg from "../../assets/download.svg";
+import { useEffect, useMemo, useState } from "react";
 import { currencyFormatter } from "../../Utils/currencyFormatter";
 import "./ChargeTable.css";
 import getTotalCharge from "../../Utils/getTotalCharge";
@@ -28,6 +29,7 @@ function ChargeTable({ order, handleEdit, handleDelete, handleClear }: Props) {
     setSelectedCharge((prev) => (prev === newTargetId ? 0 : newTargetId));
     handleEdit(newTargetId);
   };
+
   return (
     <>
       <table cellSpacing="0">
@@ -77,11 +79,13 @@ function ChargeTable({ order, handleEdit, handleDelete, handleClear }: Props) {
             <img src={deleteSvg} width="25" height="25" alt="delete charge" />
           </button>
           <PDFDownloadLink
-            className="download-btn"
             document={<PDFDocument order={order} />}
-            fileName={"Cuenta de Cobro"}
+            fileName="Cuenta de Cobro"
+            style={{ marginRight: "1rem" }}
           >
-            Descargar
+            <button className="main-button download-action">
+              <img src={downloadSvg} width="30" height="30" />
+            </button>
           </PDFDownloadLink>
           <button className="form-repeat" onClick={handleClear}>
             <img src={repeatSvg} width="25" height="25" />
@@ -95,7 +99,5 @@ export default ChargeTable;
 
 /*
           <button
-	  className="main-button download-action">
-            <img src={downloadSvg} width="30" height="30" />
           </button>
 */

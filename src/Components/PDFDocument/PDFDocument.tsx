@@ -6,6 +6,7 @@ import { documentStyles } from "./documentStyles";
 import { Order } from "../../Models";
 import { localDateFormatter } from "../../Utils/localDateFormatter";
 import getTotalCharge from "../../Utils/getTotalCharge";
+import { useEffect } from "react";
 
 interface Prop {
   order: Order;
@@ -23,6 +24,7 @@ const PDFDocument = ({ order }: Prop) => {
       },
     ],
   });
+  useEffect(() => console.log(order), [order]);
 
   return (
     <Document>
@@ -31,28 +33,34 @@ const PDFDocument = ({ order }: Prop) => {
           <Text>JM</Text>
         </View>
         <View style={documentStyles.sideInfo}>
-          <Text>Dr/a. {order.clientName}</Text>
+          <Text>{order.clientName}</Text>
           <Text>{localDateFormatter(new Date())}</Text>
         </View>
         <View style={documentStyles.table}>
           <View style={documentStyles.tableHeaderContainer}>
             <Text style={documentStyles.tableUnit}>Uds.</Text>
-            <Text style={documentStyles.tableClient}>Paciente</Text>
             <Text style={documentStyles.tableProduct}>Producto</Text>
-            <Text>Precio</Text>
+            <Text style={documentStyles.tablePricePerUnit}>Unidad</Text>
+            <Text style={documentStyles.tableTotalPrice}>Cargo</Text>
           </View>
           <View style={documentStyles.tableBody}>
             {order.charges.map((charge, index) => {
               return (
                 <View key={index} style={documentStyles.bodyRow}>
-                  <View style={documentStyles.unitBodyRow}>
+                  <View style={documentStyles.unitBodycolumn}>
                     <Text>{charge.productQuantity}</Text>
                   </View>
-                  <View style={documentStyles.productBodyRow}>
+                  <View style={documentStyles.productBodycolumn}>
                     <Text>{charge.productName}</Text>
                   </View>
-                  <View style={documentStyles.priceBodyRow}>
-                    <Text>{}</Text>
+                  <View style={documentStyles.pricePerUnitBodycolumn}>
+                    <Text>{charge.productPrice}</Text>
+                  </View>
+                  <View style={documentStyles.totalPriceBodycolumn}>
+                    <Text>
+                      {Number(charge.productPrice) *
+                        Number(charge.productQuantity)}
+                    </Text>
                   </View>
                 </View>
               );

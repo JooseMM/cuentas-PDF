@@ -55,7 +55,7 @@ const CustomForm = ({
           inputAttributes={{
             type: "text",
             minLength: 1,
-            maxLength: 20,
+            maxLength: 30,
             required: true,
             placeholder: "Nombre del producto o servicio ofrecido",
             name: ChargeProperties.ProductName,

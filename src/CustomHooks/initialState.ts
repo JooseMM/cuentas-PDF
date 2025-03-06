@@ -2,7 +2,7 @@ import { Charge, Order } from "../Models";
 
 const zeroToString = (0).toString();
 export const singleChargeInitialState: Charge = {
-  id: "",
+  id: 0,
   productName: "",
   productQuantity: zeroToString,
   productPrice: zeroToString,

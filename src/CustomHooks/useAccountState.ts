@@ -5,12 +5,11 @@ import { Order } from "../Models/Order";
 
 export function useCustomFormState() {
   const [order, setOrder] = useState<Order>({ ...orderInitialState });
-  const [singleCharge, setSingleCharge] = useState<Charge>(
-    singleChargeInitialState,
-  );
+  const [singleCharge, setSingleCharge] = useState<Charge>({
+    ...singleChargeInitialState,
+  });
   const [modifiyingAt, setModifiyingAt] = useState<number>(0);
 
-  useEffect(() => console.log(modifiyingAt), [modifiyingAt]);
   const handleClientInfoChange = (event: ChangeEvent<HTMLInputElement>) => {
     setOrder((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
@@ -49,6 +48,7 @@ export function useCustomFormState() {
           }
           return item;
         }),
+        totalCharge: prev.totalCharge + newCharge,
       }));
     } else {
       setOrder((prev) => ({
