@@ -35,8 +35,7 @@ export const documentStyles = StyleSheet.create({
   tableClient: { marginRight: "100pt" },
   tableProduct: { marginRight: "90pt" },
   unitBodyRow: { width: "105pt", textAlign: "center" },
-  clientBodyRow: { width: "175pt", textAlign: "left", fontWeight: 400 },
-  productBodyRow: { width: "165pt", textAlign: "left" },
+  productBodyRow: { width: "340pt", textAlign: "left", fontWeight: 400 },
   priceBodyRow: { width: "90pt", textAlign: "left", fontWeight: 400 },
   tableBody: { flexDirection: "column", fontSize: "15pt", fontWeight: 100 },
   bodyRow: {

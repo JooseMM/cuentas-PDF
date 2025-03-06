@@ -1,47 +1,32 @@
 import deleteSvg from "../../assets/delete.svg";
 import repeatSvg from "../../assets/repeat.svg";
-import downloadSvg from "../../assets/download.svg";
-import { Charge } from "../../Models";
 import { useMemo, useState } from "react";
 import { currencyFormatter } from "../../Utils/currencyFormatter";
 import "./ChargeTable.css";
+import getTotalCharge from "../../Utils/getTotalCharge";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import PDFDocument from "../PDFDocument/PDFDocument";
+import { Order } from "../../Models";
 
 interface Props {
-  chargeList: Charge[];
+  order: Order;
   handleDelete: (id: number) => void;
   handleEdit: (id: number) => void;
   handleClear: () => void;
 }
 
-function ChargeTable({
-  chargeList,
-  handleEdit,
-  handleDelete,
-  handleClear,
-}: Props) {
+function ChargeTable({ order, handleEdit, handleDelete, handleClear }: Props) {
   const [selectedCharge, setSelectedCharge] = useState<number>(0);
 
   // to avoid excesive re renders
-  const totalCharge = useMemo(() => {
-    const total = chargeList.reduce((accumulator, current) => {
-      return (
-        accumulator +
-        Number(current.productPrice) * Number(current.productQuantity)
-      );
-    }, 0);
-    return currencyFormatter(total);
-  }, [chargeList.length]);
+  const totalCharge = useMemo(
+    () => getTotalCharge(order.charges),
+    [order.charges.length],
+  );
 
   const handleClick = (newTargetId: number): void => {
-    setSelectedCharge((prev) => {
-      if (prev === newTargetId) {
-        return 0;
-      } else {
-        console.log(newTargetId);
-        handleEdit(newTargetId);
-        return newTargetId;
-      }
-    });
+    setSelectedCharge((prev) => (prev === newTargetId ? 0 : newTargetId));
+    handleEdit(newTargetId);
   };
   return (
     <>
@@ -55,7 +40,7 @@ function ChargeTable({
           </tr>
         </thead>
         <tbody>
-          {chargeList.map((charge, index) => {
+          {order.charges.map((charge, index) => {
             return (
               <tr
                 className={selectedCharge === charge.id ? "selected-tr" : ""}
@@ -64,25 +49,20 @@ function ChargeTable({
               >
                 <td className="sm-column">{charge.productQuantity}</td>
                 <td className="md-column">{charge.productName}</td>
+                <td>{currencyFormatter(Number(charge.productPrice))}</td>
                 <td>
-                  $&nbsp;{Number(charge.productPrice).toLocaleString("es-ES")}
-                </td>
-                <td>
-                  $&nbsp;
-                  {(
-                    Number(charge.productPrice) * Number(charge.productQuantity)
-                  ).toLocaleString("es-ES")}
+                  {currencyFormatter(
+                    Number(charge.productPrice) *
+                      Number(charge.productQuantity),
+                  )}
                 </td>
               </tr>
             );
           })}
           <tr>
             <td colSpan={4} className="form-total">
-              Total:
-              <b>
-                &nbsp;$&nbsp;
-                {totalCharge}
-              </b>
+              Total:&nbsp;
+              <b>{totalCharge}</b>
             </td>
           </tr>
         </tbody>
@@ -94,13 +74,17 @@ function ChargeTable({
             onClick={() => handleDelete(selectedCharge)}
             disabled={selectedCharge < 0}
           >
-            <img src={deleteSvg} width="30" height="30" alt="delete charge" />
+            <img src={deleteSvg} width="25" height="25" alt="delete charge" />
           </button>
-          <button className="main-button download-action">
-            <img src={downloadSvg} width="30" height="30" />
-          </button>
+          <PDFDownloadLink
+            className="download-btn"
+            document={<PDFDocument order={order} />}
+            fileName={"Cuenta de Cobro"}
+          >
+            Descargar
+          </PDFDownloadLink>
           <button className="form-repeat" onClick={handleClear}>
-            <img src={repeatSvg} width="30" height="30" />
+            <img src={repeatSvg} width="25" height="25" />
           </button>
         </div>
       </div>
@@ -108,3 +92,10 @@ function ChargeTable({
   );
 }
 export default ChargeTable;
+
+/*
+          <button
+	  className="main-button download-action">
+            <img src={downloadSvg} width="30" height="30" />
+          </button>
+*/

@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useMemo } from "react";
+import { ChangeEvent, FormEvent } from "react";
 import { Charge, ChargeProperties, ClientInfo, Order } from "../../Models";
 import { CustomInput } from "./Components/CustomInput/CustomInput";
 import "./CustomForm.css";
@@ -17,15 +17,7 @@ const CustomForm = ({
   handleChargeChange,
   handleSubmit,
   handleClientInfoChange,
-  modifiyingAt,
 }: Props) => {
-  const toModify = useMemo(() => {
-    const result = order.charges.find((item) => item.id === modifiyingAt);
-    if (!result) {
-      return null;
-    }
-    return result;
-  }, [modifiyingAt]);
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-info-section">
@@ -67,9 +59,7 @@ const CustomForm = ({
             required: true,
             placeholder: "Nombre del producto o servicio ofrecido",
             name: ChargeProperties.ProductName,
-            value: !!toModify
-              ? toModify[ChargeProperties.ProductName]
-              : singleCharge[ChargeProperties.ProductName],
+            value: singleCharge[ChargeProperties.ProductName],
             onChange: handleChargeChange,
           }}
           label="Producto/Servicio"
@@ -81,9 +71,7 @@ const CustomForm = ({
             type: "number",
             required: true,
             name: ChargeProperties.ProductQuantity,
-            value: !!toModify
-              ? toModify[ChargeProperties.ProductQuantity]
-              : singleCharge[ChargeProperties.ProductQuantity],
+            value: singleCharge[ChargeProperties.ProductQuantity],
             onChange: handleChargeChange,
           }}
           label="Cantidad"
@@ -95,9 +83,7 @@ const CustomForm = ({
             step: 500,
             required: true,
             name: ChargeProperties.ProductPrice,
-            value: !!toModify
-              ? toModify[ChargeProperties.ProductPrice]
-              : singleCharge[ChargeProperties.ProductPrice],
+            value: singleCharge[ChargeProperties.ProductPrice],
             onChange: handleChargeChange,
           }}
           label="Precio por Unidad"

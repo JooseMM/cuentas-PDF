@@ -1,6 +1,5 @@
-export function localDateFormatter(): string {
-  const date = new Date();
-  const formattedDate = date.toLocaleString("es", {
+export function localDateFormatter(date: Date): string {
+  const formattedDate = date.toLocaleString("es-ES", {
     weekday: "long",
     day: "numeric",
     month: "long",

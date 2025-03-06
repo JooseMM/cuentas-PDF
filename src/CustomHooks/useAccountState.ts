@@ -39,14 +39,38 @@ export function useCustomFormState() {
     const currentTime = new Date().getTime();
     const newCharge =
       Number(singleCharge.productQuantity) * Number(singleCharge.productPrice);
-    setOrder((prev) => ({
-      ...prev,
-      totalCharge: prev.totalCharge + newCharge,
-      charges: [...prev.charges, { ...singleCharge, id: currentTime }],
-    }));
+
+    if (modifiyingAt) {
+      setOrder((prev) => ({
+        ...prev,
+        charges: prev.charges.map((item) => {
+          if (item.id === modifiyingAt) {
+            item = singleCharge;
+          }
+          return item;
+        }),
+      }));
+    } else {
+      setOrder((prev) => ({
+        ...prev,
+        totalCharge: prev.totalCharge + newCharge,
+        charges: [...prev.charges, { ...singleCharge, id: currentTime }],
+      }));
+    }
     setSingleCharge({ ...singleChargeInitialState });
   };
   const handleEdit = (id: number): void => {
+    const chargeTarget = order.charges.find((charge) => charge.id === id);
+
+    if (id === modifiyingAt) {
+      setSingleCharge({ ...singleChargeInitialState });
+      return setModifiyingAt(0);
+    }
+    if (!chargeTarget) {
+      throw new Error("charge not found");
+    }
+
+    setSingleCharge(chargeTarget);
     setModifiyingAt(id);
   };
   return {
