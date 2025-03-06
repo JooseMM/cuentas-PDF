@@ -1,14 +1,16 @@
 import { Charge, Order } from "../Models";
 
+const zeroToString = (0).toString();
 export const singleChargeInitialState: Charge = {
+  id: "",
   productName: "",
-  productQuantity: 0,
-  productPrice: 0,
+  productQuantity: zeroToString,
+  productPrice: zeroToString,
 };
 
 export const orderInitialState: Order = {
   clientName: "",
   clientCompany: "",
   charges: [],
-  totalCharge: 0,
+  totalCharge: zeroToString,
 };

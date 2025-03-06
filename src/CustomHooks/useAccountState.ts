@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Charge } from "../Models";
 import { orderInitialState, singleChargeInitialState } from "./initialState";
 import { Order } from "../Models/Order";
@@ -8,6 +8,9 @@ export function useCustomFormState() {
   const [singleCharge, setSingleCharge] = useState<Charge>(
     singleChargeInitialState,
   );
+  const [modifiyingAt, setModifiyingAt] = useState<number>(0);
+
+  useEffect(() => console.log(modifiyingAt), [modifiyingAt]);
   const handleClientInfoChange = (event: ChangeEvent<HTMLInputElement>) => {
     setOrder((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
@@ -19,10 +22,10 @@ export function useCustomFormState() {
     }));
   };
 
-  const handleDelete = (target: number): void => {
+  const handleDelete = (id: number): void => {
     setOrder((prev) => ({
       ...prev,
-      charges: prev.charges.filter((_, index) => index !== target),
+      charges: prev.charges.filter((item) => item.id !== id),
     }));
   };
 
@@ -33,20 +36,28 @@ export function useCustomFormState() {
 
   const handleSumit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    const newCharge = singleCharge.productQuantity * singleCharge.productPrice;
+    const currentTime = new Date().getTime();
+    const newCharge =
+      Number(singleCharge.productQuantity) * Number(singleCharge.productPrice);
     setOrder((prev) => ({
       ...prev,
       totalCharge: prev.totalCharge + newCharge,
-      charges: [...prev.charges, singleCharge],
+      charges: [...prev.charges, { ...singleCharge, id: currentTime }],
     }));
+    setSingleCharge({ ...singleChargeInitialState });
+  };
+  const handleEdit = (id: number): void => {
+    setModifiyingAt(id);
   };
   return {
     order,
     singleCharge,
+    modifiyingAt,
     handleChargeChange,
     handleClientInfoChange,
     handleSumit,
     handleDelete,
     handleClear,
+    handleEdit,
   };
 }

@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent, FormEvent, useMemo } from "react";
 import { Charge, ChargeProperties, ClientInfo, Order } from "../../Models";
 import { CustomInput } from "./Components/CustomInput/CustomInput";
 import "./CustomForm.css";
@@ -6,6 +6,7 @@ import "./CustomForm.css";
 interface Props {
   singleCharge: Charge;
   order: Order;
+  modifiyingAt: number;
   handleClientInfoChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
   handleChargeChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -16,10 +17,17 @@ const CustomForm = ({
   handleChargeChange,
   handleSubmit,
   handleClientInfoChange,
+  modifiyingAt,
 }: Props) => {
+  const toModify = useMemo(() => {
+    const result = order.charges.find((item) => item.id === modifiyingAt);
+    if (!result) {
+      return null;
+    }
+    return result;
+  }, [modifiyingAt]);
   return (
     <form onSubmit={handleSubmit}>
-      <h1 className="title">JM</h1>
       <div className="input-info-section">
         <CustomInput
           inputAttributes={{
@@ -59,7 +67,9 @@ const CustomForm = ({
             required: true,
             placeholder: "Nombre del producto o servicio ofrecido",
             name: ChargeProperties.ProductName,
-            value: singleCharge[ChargeProperties.ProductName],
+            value: !!toModify
+              ? toModify[ChargeProperties.ProductName]
+              : singleCharge[ChargeProperties.ProductName],
             onChange: handleChargeChange,
           }}
           label="Producto/Servicio"
@@ -71,7 +81,9 @@ const CustomForm = ({
             type: "number",
             required: true,
             name: ChargeProperties.ProductQuantity,
-            value: singleCharge[ChargeProperties.ProductQuantity],
+            value: !!toModify
+              ? toModify[ChargeProperties.ProductQuantity]
+              : singleCharge[ChargeProperties.ProductQuantity],
             onChange: handleChargeChange,
           }}
           label="Cantidad"
@@ -83,7 +95,9 @@ const CustomForm = ({
             step: 500,
             required: true,
             name: ChargeProperties.ProductPrice,
-            value: singleCharge[ChargeProperties.ProductPrice],
+            value: !!toModify
+              ? toModify[ChargeProperties.ProductPrice]
+              : singleCharge[ChargeProperties.ProductPrice],
             onChange: handleChargeChange,
           }}
           label="Precio por Unidad"

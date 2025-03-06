@@ -1,19 +1,48 @@
 import deleteSvg from "../../assets/delete.svg";
 import repeatSvg from "../../assets/repeat.svg";
+import downloadSvg from "../../assets/download.svg";
 import { Charge } from "../../Models";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { currencyFormatter } from "../../Utils/currencyFormatter";
 import "./ChargeTable.css";
 
 interface Props {
   chargeList: Charge[];
-  handleDelete: (index: number) => void;
+  handleDelete: (id: number) => void;
+  handleEdit: (id: number) => void;
   handleClear: () => void;
 }
 
-function ChargeTable({ chargeList, handleDelete, handleClear }: Props) {
-  const [selectedCharge, setSelectedCharge] = useState<number>(-1);
+function ChargeTable({
+  chargeList,
+  handleEdit,
+  handleDelete,
+  handleClear,
+}: Props) {
+  const [selectedCharge, setSelectedCharge] = useState<number>(0);
 
+  // to avoid excesive re renders
+  const totalCharge = useMemo(() => {
+    const total = chargeList.reduce((accumulator, current) => {
+      return (
+        accumulator +
+        Number(current.productPrice) * Number(current.productQuantity)
+      );
+    }, 0);
+    return currencyFormatter(total);
+  }, [chargeList.length]);
+
+  const handleClick = (newTargetId: number): void => {
+    setSelectedCharge((prev) => {
+      if (prev === newTargetId) {
+        return 0;
+      } else {
+        console.log(newTargetId);
+        handleEdit(newTargetId);
+        return newTargetId;
+      }
+    });
+  };
   return (
     <>
       <table cellSpacing="0">
@@ -29,20 +58,20 @@ function ChargeTable({ chargeList, handleDelete, handleClear }: Props) {
           {chargeList.map((charge, index) => {
             return (
               <tr
-                className={selectedCharge === index ? "selected-tr" : ""}
+                className={selectedCharge === charge.id ? "selected-tr" : ""}
                 key={index}
-                onClick={() =>
-                  setSelectedCharge((prev) => (prev === index ? -1 : index))
-                }
+                onClick={() => handleClick(charge.id)}
               >
                 <td className="sm-column">{charge.productQuantity}</td>
                 <td className="md-column">{charge.productName}</td>
-                <td>$&nbsp;{currencyFormatter(charge.productPrice)}</td>
+                <td>
+                  $&nbsp;{Number(charge.productPrice).toLocaleString("es-ES")}
+                </td>
                 <td>
                   $&nbsp;
-                  {currencyFormatter(
-                    charge.productPrice * charge.productQuantity,
-                  )}
+                  {(
+                    Number(charge.productPrice) * Number(charge.productQuantity)
+                  ).toLocaleString("es-ES")}
                 </td>
               </tr>
             );
@@ -51,14 +80,8 @@ function ChargeTable({ chargeList, handleDelete, handleClear }: Props) {
             <td colSpan={4} className="form-total">
               Total:
               <b>
-                {" $" +
-                  currencyFormatter(
-                    chargeList.reduce(
-                      (acc, crt) =>
-                        acc + crt.productPrice * crt.productQuantity,
-                      0,
-                    ),
-                  )}
+                &nbsp;$&nbsp;
+                {totalCharge}
               </b>
             </td>
           </tr>
@@ -73,7 +96,9 @@ function ChargeTable({ chargeList, handleDelete, handleClear }: Props) {
           >
             <img src={deleteSvg} width="30" height="30" alt="delete charge" />
           </button>
-          <button className="main-button download-action">Descargar</button>
+          <button className="main-button download-action">
+            <img src={downloadSvg} width="30" height="30" />
+          </button>
           <button className="form-repeat" onClick={handleClear}>
             <img src={repeatSvg} width="30" height="30" />
           </button>

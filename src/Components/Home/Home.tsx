@@ -12,6 +12,8 @@ function Home() {
     handleClientInfoChange,
     handleClear,
     handleDelete,
+    handleEdit,
+    modifiyingAt,
   } = useCustomFormState();
   return (
     <main className="main-container">
@@ -21,6 +23,7 @@ function Home() {
         handleClientInfoChange={handleClientInfoChange}
         handleSubmit={handleSumit}
         handleChargeChange={handleChargeChange}
+        modifiyingAt={modifiyingAt}
       />
       {order.charges.length > 0 && (
         <div className="output-section">
@@ -28,6 +31,7 @@ function Home() {
             chargeList={order.charges}
             handleDelete={handleDelete}
             handleClear={handleClear}
+            handleEdit={handleEdit}
           />
         </div>
       )}

@@ -1,7 +1,8 @@
 import { ChargeProperties } from "./ChargeProperties.enum";
 
 export interface Charge {
+  [ChargeProperties.Id]: number;
   [ChargeProperties.ProductName]: string;
-  [ChargeProperties.ProductQuantity]: number;
-  [ChargeProperties.ProductPrice]: number;
+  [ChargeProperties.ProductQuantity]: string;
+  [ChargeProperties.ProductPrice]: string;
 }

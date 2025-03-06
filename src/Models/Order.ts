@@ -4,5 +4,5 @@ export interface Order {
   [ClientInfo.ClientName]: string;
   [ClientInfo.ClientCompany]: string;
   charges: Charge[];
-  totalCharge: number;
+  totalCharge: string;
 }
