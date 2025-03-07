@@ -15,7 +15,7 @@ th {
   padding-block: 0.5rem;
 }
 
-table tr {
+.clickeable-row {
   cursor: pointer;
 }
 

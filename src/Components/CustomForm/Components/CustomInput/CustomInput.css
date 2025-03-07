@@ -25,3 +25,6 @@
   bottom: -5px;
   left: 0.7rem;
 }
+.invalid-input {
+  border-color: var(--red-primary);
+}

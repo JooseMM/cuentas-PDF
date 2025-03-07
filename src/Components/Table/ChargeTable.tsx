@@ -1,5 +1,5 @@
 import { deleteSvg, repeatSvg, downloadSvg } from "../../assets";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { currencyFormatter } from "../../Utils/currencyFormatter";
 import "./ChargeTable.css";
 import getTotalCharge from "../../Utils/getTotalCharge";
@@ -9,20 +9,25 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 
 interface Props {
   order: Order;
+  modifyingAt: number;
   handleDelete: (id: number) => void;
   handleEdit: (id: number) => void;
   handleClear: () => void;
 }
 
-function ChargeTable({ order, handleEdit, handleDelete, handleClear }: Props) {
-  const [selectedCharge, setSelectedCharge] = useState<number>(0);
+function ChargeTable({
+  modifyingAt,
+  order,
+  handleEdit,
+  handleDelete,
+  handleClear,
+}: Props) {
   // to avoid excesive re renders
   const totalCharge = useMemo(
     () => getTotalCharge(order.charges),
     [order.charges],
   );
   const handleClick = (newTargetId: number): void => {
-    setSelectedCharge((prev) => (prev === newTargetId ? 0 : newTargetId));
     handleEdit(newTargetId);
   };
 
@@ -41,7 +46,7 @@ function ChargeTable({ order, handleEdit, handleDelete, handleClear }: Props) {
           {order.charges.map((charge, index) => {
             return (
               <tr
-                className={selectedCharge === charge.id ? "selected-tr" : ""}
+                className={`clickeable-row ${modifyingAt === charge.id ? "selected-tr" : ""}`}
                 key={index}
                 onClick={() => handleClick(charge.id)}
               >
@@ -69,8 +74,8 @@ function ChargeTable({ order, handleEdit, handleDelete, handleClear }: Props) {
         <div className="action-section">
           <button
             className="form-delete-item"
-            onClick={() => handleDelete(selectedCharge)}
-            disabled={selectedCharge < 0}
+            onClick={() => handleDelete(modifyingAt)}
+            disabled={modifyingAt < 0}
           >
             <img src={deleteSvg} width="25" height="25" alt="delete charge" />
           </button>

@@ -28,6 +28,7 @@ function Home() {
       {order.charges.length > 0 && (
         <div className="output-section">
           <ChargeTable
+            modifyingAt={modifiyingAt}
             order={order}
             handleDelete={handleDelete}
             handleClear={handleClear}

@@ -36,6 +36,7 @@ export function useCustomFormState() {
   const handleSumit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     const currentTime = new Date().getTime();
+    const focusElement = document.activeElement;
 
     if (modifiyingAt) {
       setOrder((prev) => ({
@@ -47,6 +48,7 @@ export function useCustomFormState() {
           return item;
         }),
       }));
+      setModifiyingAt(0);
     } else {
       setOrder((prev) => ({
         ...prev,
@@ -54,6 +56,10 @@ export function useCustomFormState() {
       }));
     }
     setSingleCharge({ ...singleChargeInitialState });
+
+    if (focusElement instanceof HTMLInputElement) {
+      focusElement.blur();
+    }
   };
   const handleEdit = (id: number): void => {
     const chargeTarget = order.charges.find((charge) => charge.id === id);

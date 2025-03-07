@@ -19,7 +19,7 @@ export const CustomInput = ({ label, inputAttributes }: props) => {
     <div className="custom-input-container">
       <label className="input-label">{label}</label>
       <input
-        className="custom-input"
+        className={`custom-input ${errorMessage.length && "invalid-input"}`}
         onFocus={() => setErrorMessage("")}
         {...inputAttributes}
         onBlur={(e) => handleBlur(e, setErrorMessage)}
