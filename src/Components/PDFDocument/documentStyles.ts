@@ -3,13 +3,13 @@ import { StyleSheet } from "@react-pdf/renderer";
 export const documentStyles = StyleSheet.create({
   page: {
     backgroundColor: "white",
-    fontFamily: "Merriweather Sans",
+    fontFamily: "Courier",
     paddingHorizontal: "5%",
     color: "#292A2B",
   },
   header: {
     marginHorizontal: "auto",
-    marginTop: "20%",
+    marginTop: "10%",
     fontSize: "60pt",
     fontWeight: 600,
   },
@@ -36,7 +36,7 @@ export const documentStyles = StyleSheet.create({
   tablePricePerUnit: { marginRight: "80pt" },
   tableTotalPrice: { marginRight: "50pt" },
   unitBodycolumn: { width: "105pt", textAlign: "center" },
-  productBodycolumn: { width: "240pt", textAlign: "left", fontWeight: 400 },
+  productBodycolumn: { width: "235pt", textAlign: "left", fontWeight: 400 },
   pricePerUnitBodycolumn: {
     width: "100pt",
     textAlign: "left",

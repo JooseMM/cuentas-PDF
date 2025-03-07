@@ -1,36 +1,24 @@
-import { Font, Page, Text, View, Document } from "@react-pdf/renderer";
-import MerriweatherSansBold from "../../assets/fonts/MerriweatherSans-Bold.ttf";
-import MerriweatherSansRegular from "../../assets/fonts/MerriweatherSans-Regular.ttf";
-import MerriweatherSansLight from "../../assets/fonts/MerriweatherSans-Light.ttf";
+import { Page, Text, View, Document } from "@react-pdf/renderer";
 import { documentStyles } from "./documentStyles";
 import { Order } from "../../Models";
 import { localDateFormatter } from "../../Utils/localDateFormatter";
+import { useMemo } from "react";
+import { currencyFormatter } from "../../Utils/currencyFormatter";
 import getTotalCharge from "../../Utils/getTotalCharge";
-import { useEffect } from "react";
 
 interface Prop {
   order: Order;
 }
 const PDFDocument = ({ order }: Prop) => {
-  Font.register({
-    family: "Merriweather Sans",
-    fonts: [
-      { src: MerriweatherSansLight, fontWeight: "light", fontStyle: "normal" },
-      { src: MerriweatherSansBold, fontStyle: "normal", fontWeight: "bold" },
-      {
-        src: MerriweatherSansRegular,
-        fontWeight: "normal",
-        fontStyle: "normal",
-      },
-    ],
-  });
-  useEffect(() => console.log(order), [order]);
-
+  const totalCharge = useMemo(
+    () => getTotalCharge(order.charges),
+    [order.charges],
+  );
   return (
     <Document>
       <Page size={"A4"} style={documentStyles.page}>
         <View style={documentStyles.header}>
-          <Text>JM</Text>
+          <Text>Empresa</Text>
         </View>
         <View style={documentStyles.sideInfo}>
           <Text>{order.clientName}</Text>
@@ -54,12 +42,16 @@ const PDFDocument = ({ order }: Prop) => {
                     <Text>{charge.productName}</Text>
                   </View>
                   <View style={documentStyles.pricePerUnitBodycolumn}>
-                    <Text>{charge.productPrice}</Text>
+                    <Text>
+                      {currencyFormatter(Number(charge.productPrice))}
+                    </Text>
                   </View>
                   <View style={documentStyles.totalPriceBodycolumn}>
                     <Text>
-                      {Number(charge.productPrice) *
-                        Number(charge.productQuantity)}
+                      {currencyFormatter(
+                        Number(charge.productPrice) *
+                          Number(charge.productQuantity),
+                      )}
                     </Text>
                   </View>
                 </View>
@@ -68,7 +60,7 @@ const PDFDocument = ({ order }: Prop) => {
           </View>
           <View style={documentStyles.total}>
             <Text style={documentStyles.bold}>Total: </Text>
-            <Text>{getTotalCharge(order.charges)}</Text>
+            <Text>{totalCharge}</Text>
           </View>
         </View>
         <View wrap={false} style={documentStyles.bankAccount}>

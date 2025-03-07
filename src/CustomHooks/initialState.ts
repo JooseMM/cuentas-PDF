@@ -12,5 +12,4 @@ export const orderInitialState: Order = {
   clientName: "",
   clientCompany: "",
   charges: [],
-  totalCharge: zeroToString,
 };

@@ -65,10 +65,16 @@ tbody td {
   justify-content: center;
   align-items: center;
 }
-.action-section button:not(:last-child) {
+.action-section *:not(:last-child) {
   margin-right: 1rem;
 }
 .download-action {
+  background-color: var(--soft-black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 0.3rem;
   max-width: 8rem;
 }
 .form-repeat {

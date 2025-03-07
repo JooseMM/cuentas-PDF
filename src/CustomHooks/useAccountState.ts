@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Charge } from "../Models";
 import { orderInitialState, singleChargeInitialState } from "./initialState";
 import { Order } from "../Models/Order";
@@ -36,8 +36,6 @@ export function useCustomFormState() {
   const handleSumit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     const currentTime = new Date().getTime();
-    const newCharge =
-      Number(singleCharge.productQuantity) * Number(singleCharge.productPrice);
 
     if (modifiyingAt) {
       setOrder((prev) => ({
@@ -48,12 +46,10 @@ export function useCustomFormState() {
           }
           return item;
         }),
-        totalCharge: prev.totalCharge + newCharge,
       }));
     } else {
       setOrder((prev) => ({
         ...prev,
-        totalCharge: prev.totalCharge + newCharge,
         charges: [...prev.charges, { ...singleCharge, id: currentTime }],
       }));
     }

@@ -1,13 +1,11 @@
-import deleteSvg from "../../assets/delete.svg";
-import repeatSvg from "../../assets/repeat.svg";
-import downloadSvg from "../../assets/download.svg";
-import { useEffect, useMemo, useState } from "react";
+import { deleteSvg, repeatSvg, downloadSvg } from "../../assets";
+import { useMemo, useState } from "react";
 import { currencyFormatter } from "../../Utils/currencyFormatter";
 import "./ChargeTable.css";
 import getTotalCharge from "../../Utils/getTotalCharge";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import PDFDocument from "../PDFDocument/PDFDocument";
 import { Order } from "../../Models";
+import PDFDocument from "../PDFDocument/PDFDocument";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 interface Props {
   order: Order;
@@ -18,13 +16,11 @@ interface Props {
 
 function ChargeTable({ order, handleEdit, handleDelete, handleClear }: Props) {
   const [selectedCharge, setSelectedCharge] = useState<number>(0);
-
   // to avoid excesive re renders
   const totalCharge = useMemo(
     () => getTotalCharge(order.charges),
-    [order.charges.length],
+    [order.charges],
   );
-
   const handleClick = (newTargetId: number): void => {
     setSelectedCharge((prev) => (prev === newTargetId ? 0 : newTargetId));
     handleEdit(newTargetId);
@@ -79,13 +75,10 @@ function ChargeTable({ order, handleEdit, handleDelete, handleClear }: Props) {
             <img src={deleteSvg} width="25" height="25" alt="delete charge" />
           </button>
           <PDFDownloadLink
+            className="download-action"
             document={<PDFDocument order={order} />}
-            fileName="Cuenta de Cobro"
-            style={{ marginRight: "1rem" }}
           >
-            <button className="main-button download-action">
-              <img src={downloadSvg} width="30" height="30" />
-            </button>
+            <img src={downloadSvg} />
           </PDFDownloadLink>
           <button className="form-repeat" onClick={handleClear}>
             <img src={repeatSvg} width="25" height="25" />
@@ -96,8 +89,3 @@ function ChargeTable({ order, handleEdit, handleDelete, handleClear }: Props) {
   );
 }
 export default ChargeTable;
-
-/*
-          <button
-          </button>
-*/
