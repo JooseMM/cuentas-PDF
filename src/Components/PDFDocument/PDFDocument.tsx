@@ -18,7 +18,7 @@ const PDFDocument = ({ order }: Prop) => {
     <Document>
       <Page size={"A4"} style={documentStyles.page}>
         <View style={documentStyles.header}>
-          <Text>Empresa</Text>
+          <Text>{order.userCompany}</Text>
         </View>
         <View style={documentStyles.sideInfo}>
           <Text>{order.clientName}</Text>

@@ -43,8 +43,8 @@ const CustomForm = ({
             required: true,
             disabled: order.charges.length > 0 ? true : false,
             placeholder: "Nombre de la empresa asociada al cliente",
-            name: ClientInfo.ClientCompany,
-            value: order[ClientInfo.ClientCompany],
+            name: ClientInfo.userCompany,
+            value: order[ClientInfo.userCompany],
             onChange: handleClientInfoChange,
           }}
           label="Nombre de Empresa"

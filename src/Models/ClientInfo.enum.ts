@@ -1,4 +1,4 @@
 export enum ClientInfo {
+  userCompany = "userCompany",
   ClientName = "clientName",
-  ClientCompany = "clientCompany",
 }

@@ -2,6 +2,6 @@ import { Charge, ClientInfo } from ".";
 
 export interface Order {
   [ClientInfo.ClientName]: string;
-  [ClientInfo.ClientCompany]: string;
+  [ClientInfo.userCompany]: string;
   charges: Charge[];
 }

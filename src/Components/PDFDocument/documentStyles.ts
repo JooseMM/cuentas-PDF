@@ -10,7 +10,7 @@ export const documentStyles = StyleSheet.create({
   header: {
     marginHorizontal: "auto",
     marginTop: "10%",
-    fontSize: "60pt",
+    fontSize: "40pt",
     fontWeight: 600,
   },
   sideInfo: {
